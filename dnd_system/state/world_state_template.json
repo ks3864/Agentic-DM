@@ -1,0 +1,16 @@
+{
+    "current_location": "Triboar Trail, south of Neverwinter",
+    "time_of_day": "Afternoon",
+    "turn_count": 0,
+    "active_quests": [
+        {
+            "id": "escort_wagon",
+            "title": "Escort Wagon to Phandalin",
+            "description": "Deliver Gundren Rockseeker's supplies to Barthen's Provisions.",
+            "status": "active"
+        }
+    ],
+    "npcs_met": [],
+    "recent_events": [],
+    "pending_roll": null
+}

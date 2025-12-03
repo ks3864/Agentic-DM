@@ -1,0 +1,18 @@
+{
+  "current_location": "Phandalin",
+  "time_of_day": "Afternoon",
+  "turn_count": 0,
+  "active_quests": [
+    {
+      "id": "escort_wagon",
+      "title": "Escort Wagon to Phandalin",
+      "description": "Deliver Gundren Rockseeker's supplies to Barthen's Provisions.",
+      "status": "active"
+    }
+  ],
+  "npcs_met": [],
+  "recent_events": [
+    "Moved to Phandalin"
+  ],
+  "pending_roll": null
+}

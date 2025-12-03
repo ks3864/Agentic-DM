@@ -1,0 +1,41 @@
+{
+    "name": "Valeros",
+    "race": "Human",
+    "class": "Fighter",
+    "stats": {
+        "str": 16,
+        "dex": 14,
+        "con": 15,
+        "int": 10,
+        "wis": 12,
+        "cha": 10,
+        "hp": 12,
+        "max_hp": 12,
+        "ac": 16,
+        "level": 1,
+        "xp": 0
+    },
+    "inventory": [
+        {
+            "name": "Longsword",
+            "quantity": 1,
+            "description": "1d8 slashing"
+        },
+        {
+            "name": "Chain Mail",
+            "quantity": 1,
+            "description": "AC 16"
+        },
+        {
+            "name": "Potion of Healing",
+            "quantity": 2,
+            "description": "2d4+2 HP"
+        }
+    ],
+    "skills": [
+        "Athletics",
+        "Intimidation"
+    ],
+    "background": "Soldier",
+    "alignment": "Neutral Good"
+}
