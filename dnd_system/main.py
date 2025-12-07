@@ -10,41 +10,95 @@ import re
 
 load_dotenv()
 
-class Tee(object):
-    def __init__(self, *files):
-        self.files = files
 
-    def write(self, obj):
-        # For the original stdout (terminal), write the object as is (with colors)
-        if self.files[0].isatty():
-            self.files[0].write(obj)
-            self.files[0].flush()
+# class Tee(object):
+#     def __init__(self, *files):
+#         self.files = files
 
-        if len(self.files) > 1:
-            # For log file, strip ANSI codes before writing
-            ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
-            clean_obj = ansi_escape.sub('', obj)
-            self.files[1].write(clean_obj)
-            self.files[1].flush()
+#     def write(self, obj):
+#         # For the original stdout (terminal), write the object as is (with colors)
+#         if self.files[0].isatty():
+#             self.files[0].write(obj)
+#             self.files[0].flush()
+#         if len(self.files) > 1:
+#             # For log file, strip ANSI codes before writing
+#             ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+#             clean_obj = ansi_escape.sub('', obj)
+#             self.files[1].write(clean_obj)
+#             self.files[1].flush()
 
-    def flush(self) :
-        for f in self.files:
-            f.flush()
+#     def flush(self) :
+#         for f in self.files:
+#             f.flush()
+
+# This class redirects stdout to the logging system.
+class StreamToLogger(object):
+    def __init__(self, logger, level):
+        self.logger = logger
+        self.level = level
+        self.linebuf = ''
+
+    def write(self, buf):
+        for line in buf.rstrip().split('\n'):
+            self.logger.log(self.level, line.rstrip())
+
+    def flush(self):
+        pass
 
 def setup_logging():
+    # Store original stdout
+    original_stdout = sys.stdout
     log_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "game.log")
-    
-    # Configure standard logging
-    logging.basicConfig(
-        filename=log_file_path,
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-    
-    # Redirect stdout and stderr to the log file as well
-    f = open(log_file_path, 'a', encoding='utf-8')
-    sys.stdout = Tee(sys.stdout, f)
-    sys.stderr = Tee(sys.stderr, f)
+
+    # Custom formatter to apply different formats and strip ANSI codes
+    class ConditionalFormatter(logging.Formatter):
+        def __init__(self):
+            super().__init__()
+            self.ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+            self.default_format = '[%(levelname)s] %(asctime)s: %(message)s'
+            self.stdout_format = '%(message)s'
+
+        def format(self, record):
+            is_stdout = record.name == 'STDOUT'
+            
+            # For the file handler, always strip ANSI
+            if isinstance(self, FileFormatter):
+                record.msg = self.ansi_escape.sub('', str(record.msg))
+                if is_stdout:
+                    formatter = logging.Formatter(self.stdout_format)
+                else:
+                    formatter = logging.Formatter(self.default_format)
+            # For the console handler, keep ANSI colors
+            else:
+                if is_stdout:
+                    formatter = logging.Formatter(self.stdout_format)
+                else:
+                    formatter = logging.Formatter(self.default_format)
+            return formatter.format(record)
+
+    class FileFormatter(ConditionalFormatter):
+        pass
+
+    # Configure root logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
+    root_logger.handlers = [] # Clear any existing handlers
+
+    # Console handler writing to original stdout
+    console_handler = logging.StreamHandler(original_stdout)
+    console_handler.setFormatter(ConditionalFormatter())
+    root_logger.addHandler(console_handler)
+
+    # File handler
+    file_handler = logging.FileHandler(log_file_path, mode='a', encoding='utf-8')
+    file_handler.setFormatter(FileFormatter())
+    root_logger.addHandler(file_handler)
+
+    # Redirect stdout and stderr to the logging system
+    stdout_logger = logging.getLogger('STDOUT')
+    sys.stdout = StreamToLogger(stdout_logger, logging.INFO)
+    sys.stderr = StreamToLogger(stdout_logger, logging.ERROR)
+
 
 class DndGame:
     def __init__(self):

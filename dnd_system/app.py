@@ -77,6 +77,7 @@ async def main(message: cl.Message):
     end_time = time.monotonic()
     latency = end_time - start_time
     print(f"System Turn Latency: {latency:.2f} seconds")
+    logging.info(f"System Turn Latency: {latency:.2f} seconds (from logging)")
     
     # CrewAI returns a generic object, we need the string output
     output_text = str(response)
