@@ -6,16 +6,27 @@ import os
 
 import logging
 import sys
+import re
 
 load_dotenv()
 
 class Tee(object):
     def __init__(self, *files):
         self.files = files
+
     def write(self, obj):
-        for f in self.files:
-            f.write(obj)
-            f.flush() # If you want the output to be visible immediately
+        # For the original stdout (terminal), write the object as is (with colors)
+        if self.files[0].isatty():
+            self.files[0].write(obj)
+            self.files[0].flush()
+
+        if len(self.files) > 1:
+            # For log file, strip ANSI codes before writing
+            ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
+            clean_obj = ansi_escape.sub('', obj)
+            self.files[1].write(clean_obj)
+            self.files[1].flush()
+
     def flush(self) :
         for f in self.files:
             f.flush()
