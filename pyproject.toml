@@ -17,17 +17,12 @@ dependencies = [
     "sentence-transformers>=5.1.2",
 ]
 
-[project.scripts]
-agenticdm = "agenticdm.main:run"
-run_crew = "agenticdm.main:run"
-train = "agenticdm.main:train"
-replay = "agenticdm.main:replay"
-test = "agenticdm.main:test"
-run_with_trigger = "agenticdm.main:run_with_trigger"
-
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.crewai]
 type = "crew"
+
+[tool.hatch.build.targets.wheel]
+packages = ["dnd_system"]
