@@ -90431,3 +90431,438 @@ Reset knowledge_graph.json from knowledge_graph_template.json
 [32m│[0m                                                                                                                                                         [32m│[0m
 [32m╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
 
+Welcome to the D&D Agentic DM! Type 'exit' to quit.
+Player: Welcome to the D&D Agentic DM! Type 'exit' to quit.
+Player: 2025-12-07 12:04:00,136 - root - INFO - Player Input: 
+[36m╭─[0m[36m────────────────────────────────────────────────────────────────────────────────────────────[0m[36m Crew Execution Started [0m[36m────────────────────────────────────────────────────────────────────────────────────────────[0m[36m─╮[0m
+[36m│[0m                                                                                                                                                                                                                  [36m│[0m
+[36m│[0m  [1;36mCrew Execution Started[0m                                                                                                                                                                                          [36m│[0m
+[36m│[0m  [37mName: [0m[36mcrew[0m                                                                                                                                                                                                      [36m│[0m
+[36m│[0m  [37mID: [0m[36m8b14fa0a-42f5-4962-93ba-6016f6a2af82[0m                                                                                                                                                                        [36m│[0m
+[36m│[0m  [37mTool Args: [0m                                                                                                                                                                                                     [36m│[0m
+[36m│[0m                                                                                                                                                                                                                  [36m│[0m
+[36m│[0m                                                                                                                                                                                                                  [36m│[0m
+[36m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+└── [1;33m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m[35m╭─[0m[35m───────────────────────────────────────────────────────────────────────────────────────────────[0m[35m 🤖 Agent Started [0m[35m───────────────────────────────────────────────────────────────────────────────────────────────[0m[35m─╮[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mAgent: [0m[1;92mRules Lawyer[0m                                                                                                                                                                                             [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mTask: [0m                                                                                                                                                                                                          [35m│[0m
+[35m│[0m  [92m            Analyze the player's input: "". [0m                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            1. CHECK HISTORY: Use ReadStateTool. Look at "pending_roll" and "recent_events".[0m                                                                                                                    [35m│[0m
+[35m│[0m  [92m               - If the player input is a follow-up to a requested roll (e.g. "I rolled 15"), MATCH it to the "pending_roll".[0m                                                                                   [35m│[0m
+[35m│[0m  [92m               - If the player is repeating an action that was JUST resolved (e.g. "Proceed" after a successful check), do NOT ask for the check again. Treat it as a confirmed move.[0m                           [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [92m            2. DETERMINE MECHANICS:[0m                                                                                                                                                                             [35m│[0m
+[35m│[0m  [92m               - If input is a Roll Result (e.g. "15"):[0m                                                                                                                                                         [35m│[0m
+[35m│[0m  [92m                 * Compare to DC.[0m                                                                                                                                                                               [35m│[0m
+[35m│[0m  [92m                 * Output: "Outcome: [Success/Failure]. [Consequence]."[0m                                                                                                                                         [35m│[0m
+[35m│[0m  [92m                 * If Success and it was for movement/travel, add "Action: Move to [Next Location]".[0m                                                                                                            [35m│[0m
+[35m│[0m  [92m               - If input is an Action (e.g. "Attack", "Sneak"):[0m                                                                                                                                                [35m│[0m
+[35m│[0m  [92m                 * If a check is needed and NOT in history, output "REQUEST_ROLL: [Check] (DC [X])".[0m                                                                                                            [35m│[0m
+[35m│[0m  [92m                 * If no check needed (or already passed), output "Action: [Do the thing]".[0m                                                                                                                     [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            3. OUTPUT FORMAT:[0m                                                                                                                                                                                   [35m│[0m
+[35m│[0m  [92m               - "REQUEST_ROLL: ..."[0m                                                                                                                                                                            [35m│[0m
+[35m│[0m  [92m               - "Outcome: ... Action: ..."[0m                                                                                                                                                                     [35m│[0m
+[35m│[0m  [92m               - "No mechanics needed."[0m                                                                                                                                                                         [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+2025-12-07 12:04:04,262 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 12:04:04,273 - root - INFO - OpenAI API usage: {'prompt_tokens': 720, 'completion_tokens': 177, 'total_tokens': 897}
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+└── [1;33m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m
+    ├── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+    └── [1;34m🧠 [0m[34mThinking...[0m[35m╭─[0m[35m───────────────────────────────────────────────────────────────────────────────────────────[0m[35m 🔧 Agent Tool Execution [0m[35m────────────────────────────────────────────────────────────────────────────────────────────[0m[35m─╮[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mAgent: [0m[1;92mRules Lawyer[0m                                                                                                                                                                                             [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mThought: [0m[92mThought: The player's input is an empty string, which means they haven't provided any action or roll result. First, I need to check if there is a pending roll the player is responding to or if [0m      [35m│[0m
+[35m│[0m  [92mthere was a recent event that would negate the need for a check. If neither is the case, I should determine if a check is needed for the implied or ongoing action. Since there is no explicit action or roll [0m  [35m│[0m
+[35m│[0m  [92mresult, I anticipate no mechanics needed right now.[0m                                                                                                                                                             [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mUsing Tool: [0m[1;92mRead Game State[0m                                                                                                                                                                                     [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[34m╭─[0m[34m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m Tool Input [0m[34m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m─╮[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m│[0m  [38;5;231;49m{[0m                                                                                                                                                                                                               [34m│[0m
+[34m│[0m  [38;5;231;49m  [0m[38;5;204;49m"file_type"[0m[38;5;231;49m:[0m[38;5;231;49m [0m[38;5;186;49m"character"[0m                                                                                                                                                                                      [34m│[0m
+[34m│[0m  [38;5;231;49m}[0m                                                                                                                                                                                                               [34m│[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[32m╭─[0m[32m─────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Tool Output [0m[32m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m{[0m                                                                                                                                                                                                               [32m│[0m
+[32m│[0m  [92m  "name": "Valeros",[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m  "race": "Human",[0m                                                                                                                                                                                              [32m│[0m
+[32m│[0m  [92m  "class": "Fighter",[0m                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m  "stats": {[0m                                                                                                                                                                                                    [32m│[0m
+[32m│[0m  [92m    "str": 16,[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m    "dex": 14,[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m    "con": 15,[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m    "int": 10,[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m    "wis": 12,[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m    "cha": 10,[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m    "hp": 12,[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92m    "max_hp": 12,[0m                                                                                                                                                                                               [32m│[0m
+[32m│[0m  [92m    "ac": 16,[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92m    "level": 1,[0m                                                                                                                                                                                                 [32m│[0m
+[32m│[0m  [92m    "xp": 0[0m                                                                                                                                                                                                     [32m│[0m
+[32m│[0m  [92m  },[0m                                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m  "inventory": [[0m                                                                                                                                                                                                [32m│[0m
+[32m│[0m  [92m    {[0m                                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m      "name": "Longsword",[0m                                                                                                                                                                                      [32m│[0m
+[32m│[0m  [92m      "quantity": 1,[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m      "description": "1d8 slashing"[0m                                                                                                                                                                             [32m│[0m
+[32m│[0m  [92m    },[0m                                                                                                                                                                                                          [32m│[0m
+[32m│[0m  [92m    {[0m                                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m      "name": "Chain Mail",[0m                                                                                                                                                                                     [32m│[0m
+[32m│[0m  [92m      "quantity": 1,[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m      "description": "AC 16"[0m                                                                                                                                                                                    [32m│[0m
+[32m│[0m  [92m    },[0m                                                                                                                                                                                                          [32m│[0m
+[32m│[0m  [92m    {[0m                                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m      "name": "Potion of Healing",[0m                                                                                                                                                                              [32m│[0m
+[32m│[0m  [92m      "quantity": 2,[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m      "description": "2d4+2 HP"[0m                                                                                                                                                                                 [32m│[0m
+[32m│[0m  [92m    }[0m                                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m  ],[0m                                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m  "skills": [[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92m    "Athletics",[0m                                                                                                                                                                                                [32m│[0m
+[32m│[0m  [92m    "Intimidation"[0m                                                                                                                                                                                              [32m│[0m
+[32m│[0m  [92m  ],[0m                                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m  "background": "Soldier",[0m                                                                                                                                                                                      [32m│[0m
+[32m│[0m  [92m  "alignment": "Neutral Good"[0m                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92m}[0m                                                                                                                                                                                                               [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+2025-12-07 12:04:06,190 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 12:04:06,192 - root - INFO - OpenAI API usage: {'prompt_tokens': 1077, 'completion_tokens': 66, 'total_tokens': 1143}
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+└── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+    [37mAssigned to: [0m[32mRules Lawyer[0m
+    [37mStatus: [0m[1;32m✅ Completed[0m
+    └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m[32m╭─[0m[32m────────────────────────────────────────────────────────────────────────────────────────────[0m[32m ✅ Agent Final Answer [0m[32m─────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mAgent: [0m[1;92mRules Lawyer[0m                                                                                                                                                                                             [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mFinal Answer:[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92mNo mechanics needed.[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+[32m╭─[0m[32m───────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Task Completion [0m[32m────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [1;32mTask Completed[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mName: [0m[32m8e9231a6-050f-4193-842f-bf843b546bd7[0m                                                                                                                                                                      [32m│[0m
+[32m│[0m  [37mAgent: [0m[32mRules Lawyer[0m                                                                                                                                                                                             [32m│[0m
+[32m│[0m  [37mTool Args: [0m                                                                                                                                                                                                     [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+├── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+│   [37mAssigned to: [0m[32mRules Lawyer[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+└── [1;33m📋 Task: 17cf641a-5fcd-412e-9019-c9c22829647e[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m[35m╭─[0m[35m───────────────────────────────────────────────────────────────────────────────────────────────[0m[35m 🤖 Agent Started [0m[35m───────────────────────────────────────────────────────────────────────────────────────────────[0m[35m─╮[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mAgent: [0m[1;92mScribe[0m                                                                                                                                                                                                   [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mTask: [0m                                                                                                                                                                                                          [35m│[0m
+[35m│[0m  [92m            Execute state updates based on the mechanics output.[0m                                                                                                                                                [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            1. PENDING ROLLS:[0m                                                                                                                                                                                   [35m│[0m
+[35m│[0m  [92m               - If "REQUEST_ROLL", set "pending_roll" in game state.[0m                                                                                                                                           [35m│[0m
+[35m│[0m  [92m               - If "Outcome: ...", CLEAR "pending_roll" (set to null).[0m                                                                                                                                         [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            2. WORLD STATE & MOVEMENT:[0m                                                                                                                                                                          [35m│[0m
+[35m│[0m  [92m               - If "Outcome: Success" (or similar positive result) AND it implies movement/progression:[0m                                                                                                        [35m│[0m
+[35m│[0m  [92m                 a. Use ReadGraphTool with the CURRENT location ID to find available transitions.[0m                                                                                                               [35m│[0m
+[35m│[0m  [92m                 b. Identify the target node ID for the transition (e.g. "leads_to").[0m                                                                                                                           [35m│[0m
+[35m│[0m  [92m                 c. Use UpdateStateTool to set "current_location" to that NEW node ID.[0m                                                                                                                          [35m│[0m
+[35m│[0m  [92m                 d. Add "Moved to [New Location Name]" to "recent_events".[0m                                                                                                                                      [35m│[0m
+[35m│[0m  [92m               - If "Action: Move to [Location]" is explicitly stated, update "current_location".[0m                                                                                                               [35m│[0m
+[35m│[0m  [92m               - Always log significant events to "recent_events".[0m                                                                                                                                              [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            3. GRAPH:[0m                                                                                                                                                                                           [35m│[0m
+[35m│[0m  [92m               - If the player moves to a new node, use UpdateGraphTool to mark the OLD node as 'visited'.[0m                                                                                                      [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            4. OUTPUT:[0m                                                                                                                                                                                          [35m│[0m
+[35m│[0m  [92m               - Summarize exactly what changed (e.g. "Location updated to X", "Pending roll cleared").[0m                                                                                                         [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+2025-12-07 12:04:07,804 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 12:04:07,815 - root - INFO - OpenAI API usage: {'prompt_tokens': 879, 'completion_tokens': 57, 'total_tokens': 936}
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+├── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+│   [37mAssigned to: [0m[32mRules Lawyer[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+└── [1;33m📋 Task: 17cf641a-5fcd-412e-9019-c9c22829647e[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m[32m╭─[0m[32m────────────────────────────────────────────────────────────────────────────────────────────[0m[32m ✅ Agent Final Answer [0m[32m─────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mAgent: [0m[1;92mScribe[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mFinal Answer:[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92mNo changes to the game state were necessary as there was no mechanics output provided to act upon. Game state remains unchanged.[0m                                                                                [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[32m╭─[0m[32m───────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Task Completion [0m[32m────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [1;32mTask Completed[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mName: [0m[32m17cf641a-5fcd-412e-9019-c9c22829647e[0m                                                                                                                                                                      [32m│[0m
+[32m│[0m  [37mAgent: [0m[32mScribe[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [37mTool Args: [0m                                                                                                                                                                                                     [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+├── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+│   [37mAssigned to: [0m[32mRules Lawyer[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+├── [1;32m📋 Task: 17cf641a-5fcd-412e-9019-c9c22829647e[0m
+│   [37mAssigned to: [0m[32mScribe[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+└── [1;33m📋 Task: 3776e2b8-314e-4a26-be41-82106f7e8375[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m[35m╭─[0m[35m───────────────────────────────────────────────────────────────────────────────────────────────[0m[35m 🤖 Agent Started [0m[35m───────────────────────────────────────────────────────────────────────────────────────────────[0m[35m─╮[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mAgent: [0m[1;92mNarrator[0m                                                                                                                                                                                                 [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mTask: [0m                                                                                                                                                                                                          [35m│[0m
+[35m│[0m  [92m            Write a response to the player.[0m                                                                                                                                                                     [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            CONTEXT FROM PREVIOUS TURNS:[0m                                                                                                                                                                        [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            1. Use ReadGraphTool to get the current scene details and valid transitions. [0m                                                                                                                       [35m│[0m
+[35m│[0m  [92m               - If the current node has "boxed_text", prioritize using that for the description.[0m                                                                                                               [35m│[0m
+[35m│[0m  [92m               - Only allow the player to move to locations listed in "Available Transitions".[0m                                                                                                                  [35m│[0m
+[35m│[0m  [92m               [0m                                                                                                                                                                                                 [35m│[0m
+[35m│[0m  [92m               FALLBACK LOGIC:[0m                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [92m               - If the ReadGraphTool returns an "orphan node" (no transitions) or if the current location is not found in the graph:[0m                                                                           [35m│[0m
+[35m│[0m  [92m                 a. Use AdventureRAGTool to search for the current location name and "next area" or "leads to".[0m                                                                                                 [35m│[0m
+[35m│[0m  [92m                 b. Infer the logical next steps from the RAG search results.[0m                                                                                                                                   [35m│[0m
+[35m│[0m  [92m                 c. Narrate the scene based on the RAG content and allow the player to proceed logically.[0m                                                                                                       [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            2. If the mechanics task output was "REQUEST_ROLL", ask the player to make that roll. Explain why.[0m                                                                                                  [35m│[0m
+[35m│[0m  [92m               IMPORTANT: If you are asking for a roll, you MUST append the string "[REQUEST_ROLL]" to the very end of your response.[0m                                                                           [35m│[0m
+[35m│[0m  [92m            3. If the mechanics task was a resolved outcome, describe the scene and the result of the action.[0m                                                                                                   [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            Use the AdventureRAGTool to find context about the current location and NPCs. [0m                                                                                                                      [35m│[0m
+[35m│[0m  [92m            IMPORTANT: When using AdventureRAGTool, pass the 'current_location' from the game state to the tool to ensure relevance.[0m                                                                            [35m│[0m
+[35m│[0m  [92m            Ignore any search results that describe scenes or encounters that clearly do not match the current location/situation.[0m                                                                              [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m  [92m            If the player is straying from the plot, steer them back using the graph's transitions.[0m                                                                                                             [35m│[0m
+[35m│[0m  [92m            Make the narrative immersive and fun.[0m                                                                                                                                                               [35m│[0m
+[35m│[0m  [92m            [0m                                                                                                                                                                                                    [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+2025-12-07 12:04:08,259 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 12:04:08,260 - root - INFO - OpenAI API usage: {'prompt_tokens': 883, 'completion_tokens': 15, 'total_tokens': 898}
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+├── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+│   [37mAssigned to: [0m[32mRules Lawyer[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+├── [1;32m📋 Task: 17cf641a-5fcd-412e-9019-c9c22829647e[0m
+│   [37mAssigned to: [0m[32mScribe[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;34m🧠 [0m[34mThinking...[0m
+└── [1;33m📋 Task: 3776e2b8-314e-4a26-be41-82106f7e8375[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m
+    └── [1;33m🔧 [0m[33mUsing Read Game State (2)[0m[35m╭─[0m[35m───────────────────────────────────────────────────────────────────────────────────────────[0m[35m 🔧 Agent Tool Execution [0m[35m────────────────────────────────────────────────────────────────────────────────────────────[0m[35m─╮[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mAgent: [0m[1;92mNarrator[0m                                                                                                                                                                                                 [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mThought: [0m[92mAction: Read Game State[0m                                                                                                                                                                                [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mUsing Tool: [0m[1;92mRead Game State[0m                                                                                                                                                                                     [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+[34m╭─[0m[34m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m Tool Input [0m[34m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m─╮[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m│[0m  [38;5;231;49m{[0m                                                                                                                                                                                                               [34m│[0m
+[34m│[0m  [38;5;231;49m  [0m[38;5;204;49m"file_type"[0m[38;5;231;49m:[0m[38;5;231;49m [0m[38;5;186;49m"world"[0m                                                                                                                                                                                          [34m│[0m
+[34m│[0m  [38;5;231;49m}[0m                                                                                                                                                                                                               [34m│[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[32m╭─[0m[32m─────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Tool Output [0m[32m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92m{[0m                                                                                                                                                                                                               [32m│[0m
+[32m│[0m  [92m  "current_location": "Phandalin",[0m                                                                                                                                                                              [32m│[0m
+[32m│[0m  [92m  "time_of_day": "Afternoon",[0m                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92m  "turn_count": 0,[0m                                                                                                                                                                                              [32m│[0m
+[32m│[0m  [92m  "active_quests": [[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m    {[0m                                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m      "id": "escort_wagon",[0m                                                                                                                                                                                     [32m│[0m
+[32m│[0m  [92m      "title": "Escort Wagon to Phandalin",[0m                                                                                                                                                                     [32m│[0m
+[32m│[0m  [92m      "description": "Deliver Gundren Rockseeker's supplies to Barthen's Provisions.",[0m                                                                                                                          [32m│[0m
+[32m│[0m  [92m      "status": "active"[0m                                                                                                                                                                                        [32m│[0m
+[32m│[0m  [92m    }[0m                                                                                                                                                                                                           [32m│[0m
+[32m│[0m  [92m  ],[0m                                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m  "npcs_met": [],[0m                                                                                                                                                                                               [32m│[0m
+[32m│[0m  [92m  "recent_events": [[0m                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m    "Moved to Phandalin"[0m                                                                                                                                                                                        [32m│[0m
+[32m│[0m  [92m  ],[0m                                                                                                                                                                                                            [32m│[0m
+[32m│[0m  [92m  "pending_roll": null[0m                                                                                                                                                                                          [32m│[0m
+[32m│[0m  [92m}[0m                                                                                                                                                                                                               [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+2025-12-07 12:04:10,239 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 12:04:10,242 - root - INFO - OpenAI API usage: {'prompt_tokens': 1025, 'completion_tokens': 122, 'total_tokens': 1147}
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+├── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+│   [37mAssigned to: [0m[32mRules Lawyer[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+├── [1;32m📋 Task: 17cf641a-5fcd-412e-9019-c9c22829647e[0m
+│   [37mAssigned to: [0m[32mScribe[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;34m🧠 [0m[34mThinking...[0m
+└── [1;33m📋 Task: 3776e2b8-314e-4a26-be41-82106f7e8375[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m
+    ├── [1;33m🔧 [0m[33mUsing Read Game State (2)[0m
+    ├── [1;32m🔧 [0m[32mUsed Read Knowledge Graph (1)[0m
+    └── [1;34m🧠 [0m[34mThinking...[0m[35m╭─[0m[35m───────────────────────────────────────────────────────────────────────────────────────────[0m[35m 🔧 Agent Tool Execution [0m[35m────────────────────────────────────────────────────────────────────────────────────────────[0m[35m─╮[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mAgent: [0m[1;92mNarrator[0m                                                                                                                                                                                                 [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mThought: [0m[92mAction: Read Knowledge Graph[0m                                                                                                                                                                           [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m│[0m  [37mUsing Tool: [0m[1;92mRead Knowledge Graph[0m                                                                                                                                                                                [35m│[0m
+[35m│[0m                                                                                                                                                                                                                  [35m│[0m
+[35m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[34m╭─[0m[34m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m Tool Input [0m[34m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m─╮[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m│[0m  [38;5;231;49m{[0m                                                                                                                                                                                                               [34m│[0m
+[34m│[0m  [38;5;231;49m  [0m[38;5;204;49m"current_node_id"[0m[38;5;231;49m:[0m[38;5;231;49m [0m[38;5;186;49m"Phandalin"[0m                                                                                                                                                                                [34m│[0m
+[34m│[0m  [38;5;231;49m}[0m                                                                                                                                                                                                               [34m│[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[32m╭─[0m[32m─────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Tool Output [0m[32m──────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92mCurrent Scene: Phandalin (ID: phandalin)[0m                                                                                                                                                                        [32m│[0m
+[32m│[0m  [92mType: Location[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92mDescription: A small town where characters can visit multiple locations and NPCs throughout a day.[0m                                                                                                              [32m│[0m
+[32m│[0m  [92mBoxed Text: None[0m                                                                                                                                                                                                [32m│[0m
+[32m│[0m  [92mNPCs: [0m                                                                                                                                                                                                          [32m│[0m
+[32m│[0m  [92mMonsters: [0m                                                                                                                                                                                                      [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [92mAvailable Transitions:[0m                                                                                                                                                                                          [32m│[0m
+[32m│[0m  [92m- To 'Goblin Ambush' (goblin_ambush): leads_to (Condition: return_to_ambush_site)[0m                                                                                                                               [32m│[0m
+[32m│[0m  [92m- To 'Cragmaw Castle' (cragmaw_castle): leads_to (Condition: search_for_Cragmaw_Castle)[0m                                                                                                                         [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+2025-12-07 12:04:14,386 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-12-07 12:04:14,389 - root - INFO - OpenAI API usage: {'prompt_tokens': 1160, 'completion_tokens': 261, 'total_tokens': 1421}
+[1;36m🚀 Crew: [0m[1;36mcrew[0m
+├── [1;32m📋 Task: 8e9231a6-050f-4193-842f-bf843b546bd7[0m
+│   [37mAssigned to: [0m[32mRules Lawyer[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;32m🔧 [0m[32mUsed Read Game State (1)[0m
+├── [1;32m📋 Task: 17cf641a-5fcd-412e-9019-c9c22829647e[0m
+│   [37mAssigned to: [0m[32mScribe[0m
+│   [37mStatus: [0m[1;32m✅ Completed[0m
+│   └── [1;34m🧠 [0m[34mThinking...[0m
+└── [1;33m📋 Task: 3776e2b8-314e-4a26-be41-82106f7e8375[0m
+    [37mStatus: [0m[2;33mExecuting Task...[0m
+    ├── [1;33m🔧 [0m[33mUsing Read Game State (2)[0m
+    └── [1;32m🔧 [0m[32mUsed Read Knowledge Graph (1)[0m[32m╭─[0m[32m────────────────────────────────────────────────────────────────────────────────────────────[0m[32m ✅ Agent Final Answer [0m[32m─────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mAgent: [0m[1;92mNarrator[0m                                                                                                                                                                                                 [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mFinal Answer:[0m                                                                                                                                                                                                   [32m│[0m
+[32m│[0m  [92mYou find yourself in the small, bustling frontier town of Phandalin, a rustic hub surrounded by the wild lands. The afternoon sun casts a warm glow over the wooden buildings and lively market stalls. The [0m    [32m│[0m
+[32m│[0m  [92mtownsfolk go about their business, trading goods and sharing news. Your mission to escort Gundren Rockseeker's supplies to Barthen's Provisions is a priority here, ensuring that the vital provisions reach [0m   [32m│[0m
+[32m│[0m  [92mtheir destination safely. From here, you can choose your next path: you might investigate the site of the Goblin Ambush, perhaps to find clues or seek justice, or you could focus your efforts on tracking [0m    [32m│[0m
+[32m│[0m  [92mdown Cragmaw Castle, the fortress that may hold answers to the threats lurking nearby. What will you do next?[0m                                                                                                   [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+[32m╭─[0m[32m───────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Task Completion [0m[32m────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [1;32mTask Completed[0m                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [37mName: [0m[32m3776e2b8-314e-4a26-be41-82106f7e8375[0m                                                                                                                                                                      [32m│[0m
+[32m│[0m  [37mAgent: [0m[32mNarrator[0m                                                                                                                                                                                                 [32m│[0m
+[32m│[0m  [37mTool Args: [0m                                                                                                                                                                                                     [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+DM: You find yourself in the small, bustling frontier town of Phandalin, a rustic hub surrounded by the wild lands. The afternoon sun casts a warm glow over the wooden buildings and lively market stalls. The townsfolk go about their business, trading goods and sharing news. Your mission to escort Gundren Rockseeker's supplies to Barthen's Provisions is a priority here, ensuring that the vital provisions reach their destination safely. From here, you can choose your next path: you might investigate the site of the Goblin Ambush, perhaps to find clues or seek justice, or you could focus your efforts on tracking down Cragmaw Castle, the fortress that may hold answers to the threats lurking nearby. What will you do next?[32m╭─[0m[32m───────────────────────────────────────────────────────────────────────────────────────────────[0m[32m Crew Completion [0m[32m────────────────────────────────────────────────────────────────────────────────────────────────[0m[32m─╮[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m  [1;32mCrew Execution Completed[0m                                                                                                                                                                                        [32m│[0m
+[32m│[0m  [37mName: [0m[32mcrew[0m                                                                                                                                                                                                      [32m│[0m
+[32m│[0m  [37mID: [0m[32m8b14fa0a-42f5-4962-93ba-6016f6a2af82[0m                                                                                                                                                                        [32m│[0m
+[32m│[0m  [37mTool Args: [0m                                                                                                                                                                                                     [32m│[0m
+[32m│[0m  [37mFinal Output: You find yourself in the small, bustling frontier town of Phandalin, a rustic hub surrounded by the wild lands. The afternoon sun casts a warm glow over the wooden buildings and lively market [0m  [32m│[0m
+[32m│[0m  [37mstalls. The townsfolk go about their business, trading goods and sharing news. Your mission to escort Gundren Rockseeker's supplies to Barthen's Provisions is a priority here, ensuring that the vital [0m        [32m│[0m
+[32m│[0m  [37mprovisions reach their destination safely. From here, you can choose your next path: you might investigate the site of the Goblin Ambush, perhaps to find clues or seek justice, or you could focus your [0m       [32m│[0m
+[32m│[0m  [37mefforts on tracking down Cragmaw Castle, the fortress that may hold answers to the threats lurking nearby. What will you do next?[0m                                                                               [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m│[0m                                                                                                                                                                                                                  [32m│[0m
+[32m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+Player: [34m╭─[0m[34m────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m Tracing Status [0m[34m────────────────────────────────────────────────────────────────────────────────────────────────[0m[34m─╮[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m│[0m  Info: Tracing is disabled.                                                                                                                                                                                      [34m│[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m│[0m  To enable tracing, do any one of these:                                                                                                                                                                         [34m│[0m
+[34m│[0m  • Set tracing=True in your Crew/Flow code                                                                                                                                                                       [34m│[0m
+[34m│[0m  • Set CREWAI_TRACING_ENABLED=true in your project's .env file                                                                                                                                                   [34m│[0m
+[34m│[0m  • Run: crewai traces enable                                                                                                                                                                                     [34m│[0m
+[34m│[0m                                                                                                                                                                                                                  [34m│[0m
+[34m╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯[0m
+
+
+╭──────────────────────────────────────────────────────────────────────────────────────────────── Execution Traces ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                                  │
+│  🔍 Detailed execution traces are available!                                                                                                                                                                     │
+│                                                                                                                                                                                                                  │
+│  View insights including:                                                                                                                                                                                        │
+│    • Agent decision-making process                                                                                                                                                                               │
+│    • Task execution flow and timing                                                                                                                                                                              │
+│    • Tool usage details                                                                                                                                                                                          │
+│                                                                                                                                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+Would you like to view your execution traces? [y/N] (20s timeout): 
+
+╭──────────────────────────────────────────────────────────────────────────────────────────── Tracing Preference Saved ────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                                  │
+│  Info: Tracing has been disabled.                                                                                                                                                                                │
+│                                                                                                                                                                                                                  │
+│  Your preference has been saved. Future Crew/Flow executions will not collect traces.                                                                                                                            │
+│                                                                                                                                                                                                                  │
+│  To enable tracing later, do any one of these:                                                                                                                                                                   │
+│  • Set tracing=True in your Crew/Flow code                                                                                                                                                                       │
+│  • Set CREWAI_TRACING_ENABLED=true in your project's .env file                                                                                                                                                   │
+│  • Run: crewai traces enable                                                                                                                                                                                     │
+│                                                                                                                                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Traceback (most recent call last):
+  File "/Users/ryeburdick/Desktop/LLMsFinalProject/agenticdm/dnd_system/main.py", line 71, in <module>
+    user_input = input("Player: ")
+KeyboardInterrupt
