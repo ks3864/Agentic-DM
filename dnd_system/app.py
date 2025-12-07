@@ -1,5 +1,7 @@
 import sys
 import os
+import time
+import logging
 
 # Ensure we can import dnd_system modules
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
@@ -68,8 +70,13 @@ async def main(message: cl.Message):
     history = cl.user_session.get("history", [])
     history.append(f"Player: {message.content}")
     
+    start_time = time.monotonic()
     # Run the game turn asynchronously to avoid blocking
     response = await cl.make_async(game.turn)(message.content, history)
+
+    end_time = time.monotonic()
+    latency = end_time - start_time
+    print(f"System Turn Latency: {latency:.2f} seconds")
     
     # CrewAI returns a generic object, we need the string output
     output_text = str(response)
