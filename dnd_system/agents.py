@@ -1,8 +1,8 @@
 from crewai import Agent
-from .tools.dice_tool import DiceTool
-from .tools.state_tool import ReadStateTool, UpdateStateTool
-from .tools.rag_tool import AdventureRAGTool, RulesRAGTool
-from .tools.graph_tool import ReadGraphTool, UpdateGraphTool
+from tools.dice_tool import DiceTool
+from tools.state_tool import ReadStateTool, UpdateStateTool
+from tools.rag_tool import AdventureRAGTool, RulesRAGTool
+from tools.graph_tool import ReadGraphTool, UpdateGraphTool
 
 class DndAgents:
     def dungeon_master(self):

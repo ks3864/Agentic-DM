@@ -1,6 +1,6 @@
 from crewai import Crew, Process
-from .agents import DndAgents
-from .tasks import DndTasks
+from agents import DndAgents
+from tasks import DndTasks
 from dotenv import load_dotenv
 import os
 
