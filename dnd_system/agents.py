@@ -25,6 +25,7 @@ class DndAgents:
             and weave the narrative. You use the adventure book to find plot points and 
             steer the player back to the main story if they deviate. 
             Always check the current location and quest status before narrating.""",
+            # llm="gpt-5-nano",
             tools=[AdventureRAGTool(), ReadStateTool(), ReadGraphTool()],
             verbose=True
         )
@@ -38,6 +39,7 @@ class DndAgents:
             If a check is needed and the player HAS NOT provided a roll result, you must REQUEST the roll (e.g., "Please roll a DC 15 Strength check").
             If the player HAS provided a roll result (e.g., "I rolled a 18"), you determine the outcome based on the rules.
             You consult the rulebooks to ensure accuracy.""",
+            # llm="gpt-5-nano",
             tools=[RulesRAGTool(), ReadStateTool()],
             verbose=True
         )
@@ -49,6 +51,7 @@ class DndAgents:
             backstory="""You are the record keeper. You update the character sheet (HP, inventory, XP) 
             and the world state (location, time, quests) based on the events of the game. 
             You ensure consistency in the data.""",
+            # llm="gpt-5-nano",
             tools=[UpdateStateTool(), ReadStateTool(), UpdateGraphTool(), ReadGraphTool()],
             verbose=True
         )

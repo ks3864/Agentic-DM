@@ -22,7 +22,8 @@ class StreamToLogger(object):
             self.logger.log(self.level, line.rstrip())
 
     def flush(self):
-        pass
+        if len(self.logger.handlers) > 0:
+            self.logger.handlers[0].flush()
 
 def setup_logging():
     # Store original stdout
@@ -58,10 +59,18 @@ def setup_logging():
     class FileFormatter(ConditionalFormatter):
         pass
 
+    # Filter to flush handlers after each log
+    class FlushFilter(logging.Filter):
+        def filter(self, record):
+            for handler in logging.getLogger().handlers:
+                handler.flush()
+            return True
+
     # Configure root logger
     root_logger = logging.getLogger()
     root_logger.setLevel(logging.INFO)
     root_logger.handlers = [] # Clear any existing handlers
+    root_logger.addFilter(FlushFilter())
 
     # Console handler writing to original stdout
     console_handler = logging.StreamHandler(original_stdout)
@@ -102,7 +111,8 @@ class DndGame:
             agents=[rules_lawyer, scribe, narrator],
             tasks=[task_mechanics, task_state, task_narrative],
             process=Process.sequential,
-            verbose=True
+            verbose=True,
+            tracing=True
         )
         
         result = crew.kickoff()

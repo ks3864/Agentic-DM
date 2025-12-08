@@ -70,14 +70,13 @@ async def main(message: cl.Message):
     history = cl.user_session.get("history", [])
     history.append(f"Player: {message.content}")
     
-    start_time = time.monotonic()
+    start_time = time.perf_counter()
     # Run the game turn asynchronously to avoid blocking
     response = await cl.make_async(game.turn)(message.content, history)
 
-    end_time = time.monotonic()
+    end_time = time.perf_counter()
     latency = end_time - start_time
-    print(f"System Turn Latency: {latency:.2f} seconds")
-    logging.info(f"System Turn Latency: {latency:.2f} seconds (from logging)")
+    logging.info(f"System Turn Latency: {latency:.2f} seconds")
     
     # CrewAI returns a generic object, we need the string output
     output_text = str(response)
