@@ -77,6 +77,45 @@ def focus_subgraph(G: nx.DiGraph, center: Optional[str], radius: int) -> nx.DiGr
     return G.subgraph(nodes).copy()
 
 
+def get_pyvis_style_options(G: nx.DiGraph) -> str:
+    n_nodes = G.number_of_nodes()
+
+    style_options = {
+        "nodes": {
+            "font": {
+                "size": 14
+            },
+            "scaling": {
+                "min": 15,
+                "max": 25
+            }
+        },
+        "edges": {
+            "font": {
+                "size": 12
+            }
+        },
+        "interaction": {
+            "dragNodes": True,
+            "hover": True
+        }
+    }
+
+    if n_nodes > 150:
+        style_options["nodes"]["font"]["size"] = 10
+        style_options["nodes"]["scaling"]["min"] = 5
+        style_options["nodes"]["scaling"]["max"] = 15
+        style_options["edges"]["font"]["size"] = 8
+
+    elif n_nodes > 50:
+        style_options["nodes"]["font"]["size"] = 12
+        style_options["nodes"]["scaling"]["min"] = 10
+        style_options["nodes"]["scaling"]["max"] = 20
+        style_options["edges"]["font"]["size"] = 10
+
+    return f"const options = {json.dumps(style_options, indent=2)}"
+
+
 def draw_interactive_graph(
     G: nx.DiGraph,
     output_html: str,
@@ -110,6 +149,8 @@ def draw_interactive_graph(
         type_to_color[t] = palette[i % len(palette)]
 
     net = Network(height="750px", width="100%", directed=True, notebook=False)
+    # Use a force-directed layout once, then disable physics so nodes don't
+    # keep drifting around during interaction.
     net.barnes_hut()
 
     for n, data in G.nodes(data=True):
@@ -134,7 +175,7 @@ def draw_interactive_graph(
         net.add_node(
             n,
             label=label,
-            title=f"<b>{label}</b><br/>{ntype}<br/><br/>{desc}",
+            title=f"{label} ({ntype}): {desc}",
             color=color,
             shape=shape,
             borderWidth=border_width,
@@ -147,6 +188,17 @@ def draw_interactive_graph(
         color = "#d62728" if etype == "triggers" else "#7f7f7f"
 
         net.add_edge(u, v, label=label, color=color, arrows="to")
+
+    # Determine PyVis style options based on number of nodes in graph
+    style_options = get_pyvis_style_options(G)
+    net.set_options(style_options)
+
+    # Disable continuous physics so the layout stays stable when viewing.
+    try:
+        net.toggle_physics(False)
+    except Exception:
+        # Older pyvis versions might not have toggle_physics; ignore if so.
+        pass
 
     net.write_html(output_html)
     print(f"Saved interactive graph to {output_html}")
