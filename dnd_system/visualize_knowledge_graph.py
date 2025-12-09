@@ -1,6 +1,7 @@
 import os
 import json
 import argparse
+import webbrowser
 from typing import Dict, Any, Optional, Set
 
 import matplotlib.pyplot as plt
@@ -74,6 +75,90 @@ def focus_subgraph(G: nx.DiGraph, center: Optional[str], radius: int) -> nx.DiGr
     nodes = set(distances.keys())
     print(f"Focusing on node '{center}' with radius {radius}: {len(nodes)} nodes in subgraph.")
     return G.subgraph(nodes).copy()
+
+
+def draw_interactive_graph(
+    G: nx.DiGraph,
+    output_html: str,
+    start_nodes: Optional[Set[str]] = None,
+    end_nodes: Optional[Set[str]] = None,
+) -> None:
+    try:
+        from pyvis.network import Network
+    except ImportError:
+        print("pyvis is not installed; skipping interactive graph generation. Install with 'pip install pyvis'.")
+        return
+
+    start_nodes = start_nodes or set()
+    end_nodes = end_nodes or set()
+
+    node_types = {G.nodes[n].get("type", "Unknown") for n in G.nodes}
+    palette = [
+        "#1f77b4",  # blue
+        "#2ca02c",  # green
+        "#ff7f0e",  # orange
+        "#d62728",  # red
+        "#9467bd",  # purple
+        "#8c564b",  # brown
+        "#e377c2",  # pink
+        "#7f7f7f",  # gray
+        "#bcbd22",  # olive
+        "#17becf",  # cyan
+    ]
+    type_to_color: Dict[str, str] = {}
+    for i, t in enumerate(sorted(node_types)):
+        type_to_color[t] = palette[i % len(palette)]
+
+    net = Network(height="750px", width="100%", directed=True, notebook=False)
+    net.barnes_hut()
+
+    for n, data in G.nodes(data=True):
+        ntype = data.get("type", "Unknown")
+        label = data.get("label", n)
+        desc = data.get("description", "")
+        color = type_to_color.get(ntype, "#7f7f7f")
+
+        shape = "dot"
+        size = 12
+        border_width = 1
+
+        if n in start_nodes:
+            shape = "ellipse"
+            size = 18
+            border_width = 3
+        elif n in end_nodes:
+            shape = "square"
+            size = 18
+            border_width = 3
+
+        net.add_node(
+            n,
+            label=label,
+            title=f"<b>{label}</b><br/>{ntype}<br/><br/>{desc}",
+            color=color,
+            shape=shape,
+            borderWidth=border_width,
+        )
+
+    for u, v, d in G.edges(data=True):
+        etype = d.get("type", "")
+        cond = d.get("condition")
+        label = cond or etype
+        color = "#d62728" if etype == "triggers" else "#7f7f7f"
+
+        net.add_edge(u, v, label=label, color=color, arrows="to")
+
+    net.write_html(output_html)
+    print(f"Saved interactive graph to {output_html}")
+
+    try:
+        browser = webbrowser.get()
+        cwd = os.getcwd()
+        html_filepath = os.path.realpath(os.path.join(cwd, output_html))
+        browser.open_new("file://" + html_filepath)
+
+    except Exception as exc:
+        print(f"Could not open browser automatically: {exc}")
 
 
 def draw_graph(
@@ -258,6 +343,22 @@ def main() -> None:
         default=2,
         help="Radius (in edges) around the focus node to include in the subgraph.",
     )
+    parser.add_argument(
+        "--interactive",
+        action="store_true",
+        help="Also generate an interactive PyVis HTML visualization.",
+    )
+    parser.add_argument(
+        "--interactive-output",
+        type=str,
+        default="graph_interactive.html",
+        help="Filename for the interactive HTML output (used with --interactive).",
+    )
+    parser.add_argument(
+        "--show-static-image",
+        action="store_true",
+        help="When used with --interactive, also show the static matplotlib window.",
+    )
 
     args = parser.parse_args()
 
@@ -284,14 +385,28 @@ def main() -> None:
     end_nodes &= set(G_view.nodes)
 
     analyze_graph(G_view)
+
+    # Default behavior: if interactive is requested, do not show the static
+    # window unless explicitly asked via --show-static-image. Static images
+    # can still be written to disk via --output.
+    show_static = (not args.no_show) and (not args.interactive or args.show_static_image)
+
     draw_graph(
         G_view,
         output=args.output,
-        show=not args.no_show,
+        show=show_static,
         max_edge_labels=args.max_edge_labels,
         start_nodes=start_nodes,
         end_nodes=end_nodes,
     )
+
+    if args.interactive:
+        draw_interactive_graph(
+            G_view,
+            output_html=args.interactive_output,
+            start_nodes=start_nodes,
+            end_nodes=end_nodes,
+        )
 
 
 if __name__ == "__main__":

@@ -16,6 +16,7 @@ dependencies = [
     "networkx>=3.4.2",
     "pypdf>=6.3.0",
     "python-dotenv>=1.2.1",
+    "pyvis>=0.3.2",
     "sentence-transformers>=5.1.2",
 ]
 
