@@ -103,12 +103,19 @@ class UpdateStateTool(BaseTool):
 
             logging.info(f"Current {state_type} state in UpdateStateTool: {json.dumps(current_state, indent=2)}")
             logging.info(f"State updates in UpdateStateTool: {json.dumps(updates, indent=2)}")
+
+            # If updates are to world state, ensure turn count is incremented even if not specfied by Scribe
+            if state_type == "world":
+                init_turn_count = current_state["turn_count"]
             
             # Simple merge for top-level keys. 
             # For nested updates (like stats), the agent should provide the full nested object or we need recursive update.
             # For now, we assume the agent provides the full object for the key they are updating.
             for key, value in updates.items():
                 current_state[key] = value
+
+            if state_type == "world" and current_state["turn_count"] == init_turn_count:
+                current_state["turn_count"] = init_turn_count + 1
                 
             with open(path, "w") as f:
                 json.dump(current_state, f, indent=2)
