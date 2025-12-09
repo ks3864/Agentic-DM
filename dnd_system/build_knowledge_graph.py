@@ -7,8 +7,12 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from dotenv import load_dotenv
 
+import argparse
+
 # Load environment variables
 load_dotenv()
+
+DEFAULT_ADVENTURE_GUIDE = "../data/Lost Mine of Phandelver.md"
 
 # Define Data Models
 class GraphNode(BaseModel):
@@ -30,23 +34,33 @@ class KnowledgeGraph(BaseModel):
     nodes: List[GraphNode]
     edges: List[GraphEdge]
 
-def build_graph():
+def build_graph(adventure_guide_path: str):
     # Initialize LLM
     llm = ChatOpenAI(model="gpt-4o", temperature=0)
     
     # Read Adventure Text
-    data_path = os.path.join(os.path.dirname(__file__), "..", "data", "Lost Mine of Phandelver.md")
+    data_path_1 = adventure_guide_path
+    if not os.path.exists(data_path_1):
+        data_path_2 = os.path.join(os.path.dirname(__file__), adventure_guide_path)
+        if not os.path.exists(data_path_2):
+            raise ValueError(f"Could not find adventure guide at paths '{data_path_1}' or '{data_path_2}'")
+        else:
+            data_path = data_path_2
+    else:
+        data_path = data_path_1
+
     with open(data_path, "r", encoding="utf-8") as f:
         text = f.read()
 
-    # Extract just the "Goblin Arrows" section for now, but chunk it
-    start_marker = "# Goblin Arrows"
-    end_marker = "### Cragmaw Hideout" 
-    
-    if start_marker in text:
-        text = text.split(start_marker)[1]
-    if end_marker in text:
-        text = text.split(end_marker)[0]
+    if adventure_guide_path == DEFAULT_ADVENTURE_GUIDE:
+        # Extract just the "Goblin Arrows" section for now, but chunk it
+        start_marker = "# Goblin Arrows"
+        end_marker = "### Cragmaw Hideout" 
+        
+        if start_marker in text:
+            text = text.split(start_marker)[1]
+        if end_marker in text:
+            text = text.split(end_marker)[0]
 
     # Simple chunking by "### " headers to get scenes
     chunks = text.split("### ")
@@ -101,4 +115,14 @@ def build_graph():
     print(f"Extracted {len(final_graph['nodes'])} nodes and {len(final_graph['edges'])} edges.")
 
 if __name__ == "__main__":
-    build_graph()
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--adventure-guide", 
+        type=str, 
+        default=DEFAULT_ADVENTURE_GUIDE, 
+        help="Path to adventure guide from which to construct knowledge graph."
+    )
+    args = parser.parse_args()
+
+    build_graph(args.adventure_guide)
