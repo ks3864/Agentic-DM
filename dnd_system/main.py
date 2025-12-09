@@ -115,21 +115,22 @@ class DndGame:
             tasks=[self.task_mechanics, self.task_state, self.task_narrative],
             process=Process.sequential,
             verbose=True,
-            tracing=True
+            tracing=True,
+            memory=False
         )
         
     def turn(self, player_input, history=[]):
         logging.info(f"Player Input: {player_input}")
 
-        # Get current world state
+        # Get current world state and event history to provide context
+        # to agents
         world_state = self.state_tool._run("world")
         character_state = self.state_tool._run("character")
-
-        print(f"Current world state: {world_state}")
+        history_text = "\n".join(history)
 
         inputs = {
             "player_input": player_input,
-            "history": history,
+            "history": history_text,
             "world_state": world_state,
             "character_state": character_state
         }

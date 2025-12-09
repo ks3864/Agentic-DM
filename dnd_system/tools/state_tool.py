@@ -2,6 +2,7 @@ from crewai.tools import BaseTool
 import json
 import os
 from typing import Dict, Any, Union, Optional
+import logging
 
 STATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../state")
 
@@ -13,15 +14,24 @@ class ReadStateTool(BaseTool):
         try:
             if "char" in file_type.lower():
                 filename = "character_sheet.json"
+                state_type = "character"
+
             elif "world" in file_type.lower():
                 filename = "world_state.json"
+                state_type = "world"
+
             else:
                 return "Invalid file type. Specify 'character' or 'world'."
             
             path = os.path.join(STATE_DIR, filename)
             with open(path, "r") as f:
                 data = json.load(f)
-            return json.dumps(data, indent=2)
+            state_str = json.dumps(data, indent=2)
+
+            logging.info(f"Current {state_type} state from ReadStateTool: {state_str}")
+
+            return state_str
+
         except Exception as e:
             return f"Error reading state: {str(e)}"
 
@@ -77,8 +87,12 @@ class UpdateStateTool(BaseTool):
 
             if "char" in file_type.lower():
                 filename = "character_sheet.json"
+                state_type = "character"
+
             elif "world" in file_type.lower():
                 filename = "world_state.json"
+                state_type = "world"
+
             else:
                 return "Invalid file type."
             
@@ -86,6 +100,9 @@ class UpdateStateTool(BaseTool):
             
             with open(path, "r") as f:
                 current_state = json.load(f)
+
+            logging.info(f"Current {state_type} state in UpdateStateTool: {json.dumps(current_state, indent=2)}")
+            logging.info(f"State updates in UpdateStateTool: {json.dumps(updates, indent=2)}")
             
             # Simple merge for top-level keys. 
             # For nested updates (like stats), the agent should provide the full nested object or we need recursive update.
@@ -95,6 +112,8 @@ class UpdateStateTool(BaseTool):
                 
             with open(path, "w") as f:
                 json.dump(current_state, f, indent=2)
+
+            logging.info(f"Updated {state_type} state from UpdateStateTool: {json.dumps(current_state, indent=2)}")
                 
             return f"Updated {filename} successfully."
         except Exception as e:

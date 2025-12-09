@@ -60,15 +60,13 @@ class DndTasks:
         )
         
     def generate_narrative(self, agent, mechanics_task, state_task):
-        # history_text = "\n".join(history[-6:]) # Last 3 turns (User + AI)
         return Task(
             description="""
             Write a response to the player.
 
             Current world state: {world_state}
-            
-            CONTEXT FROM PREVIOUS TURNS:
-            {history}
+
+            Recent events: {history}
             
             1. Check the current world state to determine the current scene details and valid transitions. 
                - If the current node has "boxed_text", prioritize using that for the description.
