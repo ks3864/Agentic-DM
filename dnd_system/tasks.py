@@ -1,12 +1,14 @@
 from crewai import Task
 
 class DndTasks:
-    def resolve_mechanics(self, agent, player_input):
+    def resolve_mechanics(self, agent):
         return Task(
-            description=f"""
-            Analyze the player's input: "{player_input}". 
+            description="""
+            Analyze the player's input: "{player_input}".
+
+            The current world state is: {world_state}
             
-            1. CHECK HISTORY: Use ReadStateTool. Look at "pending_roll" and "recent_events".
+            1. CHECK HISTORY: Look at "pending_roll" and "recent_events" from the current world state.
                - If the player input is a follow-up to a requested roll (e.g. "I rolled 15"), MATCH it to the "pending_roll".
                - If the player is repeating an action that was JUST resolved (e.g. "Proceed" after a successful check), do NOT ask for the check again. Treat it as a confirmed move.
 
@@ -57,16 +59,18 @@ class DndTasks:
             context=[mechanics_task]
         )
         
-    def generate_narrative(self, agent, player_input, mechanics_task, state_task, history=[]):
-        history_text = "\n".join(history[-6:]) # Last 3 turns (User + AI)
+    def generate_narrative(self, agent, mechanics_task, state_task):
+        # history_text = "\n".join(history[-6:]) # Last 3 turns (User + AI)
         return Task(
-            description=f"""
+            description="""
             Write a response to the player.
+
+            Current world state: {world_state}
             
             CONTEXT FROM PREVIOUS TURNS:
-            {history_text}
+            {history}
             
-            1. Use ReadGraphTool to get the current scene details and valid transitions. 
+            1. Check the current world state to determine the current scene details and valid transitions. 
                - If the current node has "boxed_text", prioritize using that for the description.
                - Only allow the player to move to locations listed in "Available Transitions".
                
