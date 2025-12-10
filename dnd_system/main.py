@@ -8,6 +8,8 @@ import logging
 import sys
 import re
 
+from tools.state_tool import ReadStateTool
+
 load_dotenv()
 
 # This class redirects stdout to the logging system.
@@ -93,29 +95,47 @@ class DndGame:
         setup_logging()
         self.agents = DndAgents()
         self.tasks = DndTasks()
+
+        # For reading game state
+        self.state_tool = ReadStateTool()
+
+        # Create Agents
+        self.narrator = self.agents.narrator()
+        self.rules_lawyer = self.agents.rules_lawyer()
+        self.scribe = self.agents.scribe()
+        
+        # Create Tasks
+        self.task_mechanics = self.tasks.resolve_mechanics(self.rules_lawyer)
+        self.task_state = self.tasks.update_state(self.scribe, self.task_mechanics)
+        self.task_narrative = self.tasks.generate_narrative(self.narrator, self.task_mechanics, self.task_state)
+
+        # Create crew
+        self.crew = Crew(
+            agents=[self.rules_lawyer, self.scribe, self.narrator],
+            tasks=[self.task_mechanics, self.task_state, self.task_narrative],
+            process=Process.sequential,
+            verbose=True,
+            tracing=True,
+            memory=False
+        )
         
     def turn(self, player_input, history=[]):
         logging.info(f"Player Input: {player_input}")
-        # Create Agents
-        narrator = self.agents.narrator()
-        rules_lawyer = self.agents.rules_lawyer()
-        scribe = self.agents.scribe()
+
+        # Get current world state and event history to provide context
+        # to agents
+        world_state = self.state_tool._run("world")
+        character_state = self.state_tool._run("character")
+        history_text = "\n".join(history)
+
+        inputs = {
+            "player_input": player_input,
+            "history": history_text,
+            "world_state": world_state,
+            "character_state": character_state
+        }
         
-        # Create Tasks
-        task_mechanics = self.tasks.resolve_mechanics(rules_lawyer, player_input)
-        task_state = self.tasks.update_state(scribe, task_mechanics)
-        task_narrative = self.tasks.generate_narrative(narrator, player_input, task_mechanics, task_state, history)
-        
-        # Create Crew
-        crew = Crew(
-            agents=[rules_lawyer, scribe, narrator],
-            tasks=[task_mechanics, task_state, task_narrative],
-            process=Process.sequential,
-            verbose=True,
-            tracing=True
-        )
-        
-        result = crew.kickoff()
+        result = self.crew.kickoff(inputs=inputs)
         return result
 
 if __name__ == "__main__":

@@ -26,7 +26,7 @@ class DndAgents:
             steer the player back to the main story if they deviate. 
             Always check the current location and quest status before narrating.""",
             # llm="gpt-5-nano",
-            tools=[AdventureRAGTool(), ReadStateTool(), ReadGraphTool()],
+            tools=[AdventureRAGTool(), ReadGraphTool()],
             verbose=True
         )
 
@@ -40,7 +40,7 @@ class DndAgents:
             If the player HAS provided a roll result (e.g., "I rolled a 18"), you determine the outcome based on the rules.
             You consult the rulebooks to ensure accuracy.""",
             # llm="gpt-5-nano",
-            tools=[RulesRAGTool(), ReadStateTool()],
+            tools=[RulesRAGTool()],
             verbose=True
         )
 
@@ -52,6 +52,6 @@ class DndAgents:
             and the world state (location, time, quests) based on the events of the game. 
             You ensure consistency in the data.""",
             # llm="gpt-5-nano",
-            tools=[UpdateStateTool(), ReadStateTool(), UpdateGraphTool(), ReadGraphTool()],
+            tools=[UpdateStateTool(), UpdateGraphTool(), ReadGraphTool()],
             verbose=True
         )
