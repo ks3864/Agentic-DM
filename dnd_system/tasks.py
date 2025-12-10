@@ -39,7 +39,7 @@ Execute state updates based on the mechanics output.
       c. Use UpdateStateTool to set "current_location" to that NEW node ID.
       d. Add "Moved to [New Location Name]" to "recent_events".
    - If "Action: Move to [Location]" is explicitly stated, update "current_location".
-   - Always log significant events to "recent_events".
+   - Always log significant events to "recent_events". These include brief summaries of player actions, pending skill checks, action and skill check outcomes, and changes to character or world state.
 
 3. GRAPH:
    - If the player moves to a new node, use UpdateGraphTool to mark the OLD node as 'visited'.
@@ -49,9 +49,9 @@ OUTPUT: Summarize exactly what changed (e.g. "Location updated to X", "Pending r
 
 GENERATE_NARRATIVE_TASK_DESCRIPTION = """
 Write a narrative response to the player to progress the game based on the current scene, available transitions,
-and the player's proposed action.
+recent events, and the player's proposed action.
 
-1. Check the current world state below for current scene details and valid transitions. 
+1. Check the current world state below for current scene details, recent events, and valid transitions. 
    - If the current node has "boxed_text", use that info in your response.
    - Only allow the player to move to locations listed in "Available Transitions".
    
@@ -73,12 +73,10 @@ Ignore any results describing scenes or encounters that do not match the current
 If the player is straying from the plot, steer them back using the available transitions.
 
 IMPORTANT: Keep your response as concise as possible, no more than 2 paragraphs. Do NOT use generic or cliche descriptions of 
-the current scene or the player's adventure. Do not ask the player what they want to do next. Do not include unnecessary mechanics 
+the current scene or the player's adventure. Do not include unnecessary mechanics 
 information in your response, especially in NPC dialogue.
 
 Current world state: {world_state}
-
-Recent events: {history}
 """
 
 
