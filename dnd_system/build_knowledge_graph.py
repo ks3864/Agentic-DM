@@ -36,7 +36,7 @@ class KnowledgeGraph(BaseModel):
 
 def build_graph(adventure_guide_path: str):
     # Initialize LLM
-    llm = ChatOpenAI(model="gpt-4o", temperature=0)
+    llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
     
     # Read Adventure Text
     data_path_1 = adventure_guide_path
