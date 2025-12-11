@@ -173,6 +173,92 @@ Suggest edges that would connect these components based on:
     
     return graph
 
+
+def generate_story_context(adventure_text: str, llm: ChatOpenAI) -> str:
+    """
+    Generate a concise story overview using LLM, based on the adventure's
+    Overview and Background sections.
+    """
+    # Extract Overview and Background sections
+    overview_match = re.search(r'### Overview\s*(.*?)(?=###|\Z)', adventure_text, re.DOTALL)
+    background_match = re.search(r'### Background\s*(.*?)(?=###|\Z)', adventure_text, re.DOTALL)
+    
+    overview = overview_match.group(1).strip() if overview_match else ""
+    background = background_match.group(1).strip() if background_match else ""
+    
+    context = f"Background:\n{background}\n\nOverview:\n{overview}"
+    
+    prompt = ChatPromptTemplate.from_messages([
+        ("system", """You are a D&D adventure summarizer. Create a comprehensive story summary that covers the ENTIRE adventure arc. This summary will be used as reference context for a DM throughout the campaign.
+
+Include:
+1. **Background & History**: The lore and backstory (Wave Echo Cave, Phandelver's Pact, etc.)
+2. **Main Plot**: The central conflict and what drives the adventure  
+3. **Key Villain**: Who they are, what they want, and their methods
+4. **Major NPCs**: Important characters the party will encounter
+5. **Adventure Structure**: How the adventure progresses through its parts (without spoiling current situation)
+6. **Ultimate Goal**: What the party needs to accomplish to complete the adventure
+
+Write 200-300 words. This is a STATIC reference, not a dynamic situation update."""),
+        ("user", "Create a complete story summary for this D&D adventure:\n\n{context}")
+    ])
+    
+    chain = prompt | llm
+    
+    try:
+        result = chain.invoke({"context": context})
+        return result.content.strip()
+    except Exception as e:
+        print(f"Error generating story context: {e}")
+        return "The party is on an adventure in the Sword Coast region."
+
+
+def update_world_state_template(story_context: str, graph: dict):
+    """
+    Update the world_state_template.json with the generated story context
+    and extract initial quests from the knowledge graph.
+    """
+    template_path = os.path.join(os.path.dirname(__file__), "state", "world_state_template.json")
+    
+    try:
+        with open(template_path, "r") as f:
+            template = json.load(f)
+    except Exception as e:
+        print(f"Error reading world state template: {e}")
+        return
+    
+    # Update story context
+    template["story_context"] = story_context
+    
+    # Extract initial quests from graph nodes
+    quest_nodes = [n for n in graph.get("nodes", []) if n.get("type") == "quest"]
+    
+    # Find the initial quests (those that should be active at start)
+    initial_quest_ids = ["escort_wagon_to_phandalin", "escort_wagon", "rescue_sildar"]
+    
+    active_quests = []
+    for quest in quest_nodes:
+        if any(qid in quest["id"] for qid in initial_quest_ids):
+            active_quests.append({
+                "id": quest["id"],
+                "title": quest["name"],
+                "description": quest.get("description", ""),
+                "status": "active",
+                "giver_npc": quest.get("npcs", ["unknown"])[0] if quest.get("npcs") else "unknown",
+                "objectives": [
+                    {"text": "Complete the quest objectives", "completed": False}
+                ]
+            })
+    
+    if active_quests:
+        template["active_quests"] = active_quests
+    
+    # Save updated template
+    with open(template_path, "w") as f:
+        json.dump(template, f, indent=2)
+    
+    print(f"Updated world_state_template with story context ({len(story_context)} chars) and {len(active_quests)} initial quests.")
+
 def split_by_h1(text: str) -> List[dict]:
     """Split markdown text by # (H1) headers, preserving header info."""
     sections = []
@@ -358,6 +444,14 @@ Create BIDIRECTIONAL edges where movement is possible in both directions.
     # Cross-chapter linking: use LLM to connect disconnected components
     if not test_mode:
         final_graph = connect_graph_components(final_graph, text, llm)
+        
+        # Generate story context and update world state template
+        print(f"\n{'='*50}")
+        print("GENERATING STORY CONTEXT")
+        print(f"{'='*50}")
+        story_context = generate_story_context(text, llm)
+        print(f"Story context generated:\n{story_context[:200]}...")
+        update_world_state_template(story_context, final_graph)
 
     # Save to file
     output_path = os.path.join(os.path.dirname(__file__), "state", "knowledge_graph.json")
