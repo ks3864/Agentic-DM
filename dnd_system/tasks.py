@@ -5,6 +5,7 @@ RESOLVE_MECHANICS_TASK_DESCRIPTION = """
 Analyze the player's input: "{player_input}".
 
 The current world state is: {world_state}
+The character state is: {character_state}
 
 1. CHECK HISTORY: Look at "pending_roll" and "recent_events" from the current world state.
    - If the player input is a follow-up to a requested roll (e.g. "I rolled 15"), MATCH it to the "pending_roll".
@@ -51,9 +52,12 @@ Execute state updates based on the mechanics output.
 GENERATE_NARRATIVE_TASK_DESCRIPTION = """
 Write a response to the player.
 
-Current world state: {world_state}
+**STORY CONTEXT (Reference for the entire adventure):**
+{story_context}
 
-Recent events: {history}
+**Current world state:** {world_state}
+
+**Recent conversation history:** {history}
 
 1. Check the current world state to determine the current scene details and valid transitions. 
    - If the current node has "boxed_text", prioritize using that for the description.
