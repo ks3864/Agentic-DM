@@ -51,7 +51,8 @@ GENERATE_NARRATIVE_TASK_DESCRIPTION = """
 Write a narrative response to the player to progress the game based on the current scene, available transitions,
 recent events, and the player's proposed action.
 
-1. Check the current world state below for current scene details, recent events, and valid transitions. 
+1. Check the current world state below for current scene details, and recent events. Use the ReadGraphTool with the current location 
+to determine the available scene transitions.
    - If the current node has "boxed_text", use that info in your response.
    - Only allow the player to move to locations listed in "Available Transitions".
    
