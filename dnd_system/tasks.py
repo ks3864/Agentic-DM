@@ -48,8 +48,12 @@ OUTPUT: Summarize exactly what changed (e.g. "Location updated to X", "Pending r
 """.strip()
 
 GENERATE_NARRATIVE_TASK_DESCRIPTION = """
-Write a narrative response to the player to progress the game based on the current scene, available transitions,
-recent events, and the player's proposed action.
+Write a response to the player.
+
+**STORY CONTEXT (Reference for the entire adventure):**
+{story_context}
+
+**Current world state:** {world_state}
 
 1. Check the current world state below for current scene details, and recent events. Use the ReadGraphTool with the current location 
 to determine the available scene transitions.

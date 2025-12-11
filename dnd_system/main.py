@@ -126,13 +126,22 @@ class DndGame:
         # to agents
         world_state = self.state_tool._run("world")
         character_state = self.state_tool._run("character")
-        history_text = "\n".join(history)
+        history_text = "\n".join(history[-12:])  # Last 6 turns (12 messages)
+        
+        # Extract story_context from world_state JSON
+        import json
+        try:
+            world_data = json.loads(world_state) if isinstance(world_state, str) else world_state
+            story_context = world_data.get("story_context", "Adventure in the Sword Coast region.")
+        except:
+            story_context = "Adventure in the Sword Coast region."
 
         inputs = {
             "player_input": player_input,
             "history": history_text,
             "world_state": world_state,
-            "character_state": character_state
+            "character_state": character_state,
+            "story_context": story_context
         }
         
         result = self.crew.kickoff(inputs=inputs)

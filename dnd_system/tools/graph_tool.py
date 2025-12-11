@@ -81,6 +81,7 @@ class ReadGraphTool(BaseTool):
             f"Boxed Text: {current_node.get('boxed_text', 'None')}",
             f"NPCs: {', '.join(current_node.get('npcs', []))}",
             f"Monsters: {', '.join(current_node.get('monsters', []))}",
+            f"Features: {'; '.join(current_node.get('features', [])) or 'None'}",
             "\nAvailable Transitions:",
             "\n".join(options) if options else "No clear transitions defined."
         ]
