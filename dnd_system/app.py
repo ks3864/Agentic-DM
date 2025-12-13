@@ -18,6 +18,12 @@ import shutil
 
 STATE_DIR = os.path.join(os.path.dirname(__file__), "state")
 
+ADVENTURE_GUIDE_PATH = os.environ.get("AGENTICDM_ADVENTURE_GUIDE_PATH", "./data/Lost Mine of Phandelver.md")
+KNOWLEDGE_GRAPH_TEMPLATE_PATH = os.environ.get(
+    "AGENTICDM_KNOWLEDGE_GRAPH_TEMPLATE_PATH",
+    "./dnd_system/state/knowledge_graph_template.json",
+)
+
 def reset_state():
     """Resets the game state and knowledge graph from templates."""
     templates = [
@@ -27,7 +33,12 @@ def reset_state():
     ]
     
     for template, target in templates:
-        src = os.path.join(STATE_DIR, template)
+        if target == "knowledge_graph.json":
+            src = KNOWLEDGE_GRAPH_TEMPLATE_PATH
+            if not os.path.isabs(src):
+                src = os.path.join(os.path.dirname(__file__), "..", src)
+        else:
+            src = os.path.join(STATE_DIR, template)
         dst = os.path.join(STATE_DIR, target)
         if os.path.exists(src):
             shutil.copy2(src, dst)
