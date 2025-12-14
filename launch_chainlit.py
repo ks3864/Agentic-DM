@@ -36,7 +36,7 @@ if __name__ == "__main__":
     args, _unknown = parser.parse_known_args(sys.argv[1:])
 
     os.environ["AGENTICDM_ADVENTURE_GUIDE_PATH"] = args.adventure_guide
-    os.environ["AGENTICDM_KNOWLEDGE_GRAPH_TEMPLATE_PATH"] = args.knowledge_graph_template
+    os.environ["AGENTICDM_KNOWLEDGE_GRAPH_TEMPLATE_PATH"] = args.knowledge_graph
 
     # Ensure the script acts like 'chainlit run dnd_system/app.py'
     sys.argv = ["chainlit", "run", "dnd_system/app.py"]
