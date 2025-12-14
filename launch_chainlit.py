@@ -30,7 +30,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--knowledge-graph",
         type=str,
-        default="./dnd_system/state/knowledge_graph_template.json",
+        default="./dnd_system/state/knowledge_graph.json",
     )
 
     args, _unknown = parser.parse_known_args(sys.argv[1:])
