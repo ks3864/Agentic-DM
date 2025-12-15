@@ -7,7 +7,8 @@ from dnd_system.tools.state_tool import UpdateStateTool
 from dnd_system.main import DndGame
 
 # Ensure imports work
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+# Ensure imports work by adding project root to path
+sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 
 class TestTools(unittest.TestCase):
     def test_adventure_rag_tool(self):

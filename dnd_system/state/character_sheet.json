@@ -2,18 +2,37 @@
     "name": "Valeros",
     "race": "Human",
     "class": "Fighter",
+    "level": 1,
+    "background": "Soldier",
+    "alignment": "Neutral Good",
     "stats": {
         "str": 16,
         "dex": 14,
         "con": 15,
         "int": 10,
         "wis": 12,
-        "cha": 10,
+        "cha": 10
+    },
+    "combat": {
         "hp": 12,
         "max_hp": 12,
+        "temp_hp": 0,
         "ac": 16,
-        "level": 1,
-        "xp": 0
+        "initiative_bonus": 2,
+        "speed": 30
+    },
+    "xp": 0,
+    "inspiration": false,
+    "currency": {
+        "cp": 0,
+        "sp": 0,
+        "gp": 15,
+        "pp": 0
+    },
+    "conditions": [],
+    "death_saves": {
+        "successes": 0,
+        "failures": 0
     },
     "inventory": [
         {
@@ -30,12 +49,38 @@
             "name": "Potion of Healing",
             "quantity": 2,
             "description": "2d4+2 HP"
+        },
+        {
+            "name": "Explorer's Pack",
+            "quantity": 1,
+            "description": "Backpack, bedroll, mess kit, tinderbox, torches (10), rations (10 days), waterskin, 50 ft rope"
         }
     ],
     "skills": [
         "Athletics",
         "Intimidation"
     ],
-    "background": "Soldier",
-    "alignment": "Neutral Good"
+    "proficiencies": {
+        "armor": [
+            "all armor",
+            "shields"
+        ],
+        "weapons": [
+            "simple weapons",
+            "martial weapons"
+        ],
+        "tools": [
+            "dice set",
+            "vehicles (land)"
+        ],
+        "saving_throws": [
+            "str",
+            "con"
+        ]
+    },
+    "spell_slots": null,
+    "features": [
+        "Fighting Style: Defense (+1 AC when wearing armor)",
+        "Second Wind (1d10+1 HP as bonus action, 1/short rest)"
+    ]
 }

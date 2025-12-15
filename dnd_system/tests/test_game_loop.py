@@ -1,6 +1,8 @@
 import sys
 import os
 import asyncio
+# Add project root to path for imports
+sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 from dnd_system.main import DndGame
 from dnd_system.app import reset_state
 

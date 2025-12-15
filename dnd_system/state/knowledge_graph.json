@@ -1,0 +1,2314 @@
+{
+  "nodes": [
+    {
+      "id": "the_adventure_begins",
+      "name": "The Adventure Begins",
+      "type": "story_beat",
+      "description": "The player characters are escorting a wagon of provisions from Neverwinter to Phandalin."
+    },
+    {
+      "id": "neverwinter",
+      "name": "Neverwinter",
+      "type": "location",
+      "description": "A city where the adventure begins."
+    },
+    {
+      "id": "triboar_trail",
+      "name": "Triboar Trail",
+      "type": "location",
+      "description": "A stretch of foothills and plains between the Sword Mountains and Neverwinter Wood."
+    },
+    {
+      "id": "gundren_rockseeker",
+      "name": "Gundren Rockseeker",
+      "type": "npc",
+      "description": "A dwarf captured by the Cragmaws, held at Cragmaw Castle."
+    },
+    {
+      "id": "sildar_hallwinter",
+      "name": "Sildar Hallwinter",
+      "type": "npc",
+      "description": "A member of the Lords' Alliance who wants the characters to find Cragmaw Castle and rescue Gundren Rockseeker."
+    },
+    {
+      "id": "escort_wagon_to_phandalin",
+      "name": "Escort Wagon to Phandalin",
+      "type": "quest",
+      "description": "Escort a wagonload of provisions to Phandalin for Gundren Rockseeker."
+    },
+    {
+      "id": "goblin_ambush",
+      "name": "Goblin Ambush",
+      "type": "encounter",
+      "description": "An ambush by goblins on the Triboar Trail.",
+      "boxed_text": "You've been on the Triboar Trail for about half a day. As you come around a bend, you spot two dead horses sprawled about fifty feet ahead of you, blocking the path. Each has several black-feathered arrows sticking out of it. The woods press close to the trail here, with a steep embankment and dense thickets on either side.",
+      "npcs": [
+        "gundren_rockseeker",
+        "sildar_hallwinter"
+      ],
+      "monsters": [
+        "goblin"
+      ],
+      "mechanics": "Goblins have Stealth +6. Check for surprise against characters' passive Perception."
+    },
+    {
+      "id": "goblin_trail",
+      "name": "Goblin Trail",
+      "type": "location",
+      "description": "A hidden trail leading from the ambush site to the Cragmaw Hideout.",
+      "features": [
+        "Snare: DC 12 Perception to spot, DC 10 Dex save to avoid being suspended",
+        "Pit: DC 15 Perception to spot, DC 10 Dex save to avoid falling"
+      ]
+    },
+    {
+      "id": "cragmaw_hideout",
+      "name": "Cragmaw Hideout",
+      "type": "dungeon",
+      "description": "A hideout used by the Cragmaw goblins to stage ambushes."
+    },
+    {
+      "id": "cave_mouth",
+      "name": "Cave Mouth",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "The entrance to the Cragmaw Hideout.",
+      "boxed_text": "Following the goblins' trail, you come across a large cave in a hillside five miles from the scene of the ambush. A shallow stream flows out of the cave mouth, which is screened by dense briar thickets. A narrow dry path leads into the cave on the right-hand side of the stream.",
+      "features": [
+        "Developments: Goblins in area 2 may notice noise and attack"
+      ]
+    },
+    {
+      "id": "goblin_blind",
+      "name": "Goblin Blind",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "A goblin guard post hidden in briar thickets.",
+      "boxed_text": "On the east side of the stream flowing from the cave mouth, a small area in the briar thickets has been hollowed out to form a lookout post or blind. Wooden planks flatten out the briars and provide room for guards to lie hidden and watch the area\u2014including a pair of goblins lurking there right now!",
+      "monsters": [
+        "goblin"
+      ],
+      "features": [
+        "Thickets: Difficult terrain, provide half cover"
+      ]
+    },
+    {
+      "id": "kennel",
+      "name": "Kennel",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "A chamber with chained wolves.",
+      "boxed_text": "Just inside the cave mouth, a few uneven stone steps lead up to a small, dank chamber on the east side of the passage. The cave narrows to a steep fissure at the far end, and is filled with the stench of animals. Savage snarls and the sounds of rattling chains greet your ears where three wolves are chained up just inside the opening. Each wolf's chain leads to an iron rod driven into the base of a stalagmite.",
+      "monsters": [
+        "wolf"
+      ],
+      "features": [
+        "Fissure: Chimney to area 8, DC 10 Athletics to climb",
+        "Developments: Wolves can break free with DC 15 Strength check"
+      ]
+    },
+    {
+      "id": "steep_passage",
+      "name": "Steep Passage",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "A steep passage with a stream and a bridge overhead.",
+      "boxed_text": "The main passage from the cave mouth climbs steeply upward, the stream plunging and splashing down its west side. In the shadows, a side passage leads west across the other side of the stream.",
+      "features": [
+        "Western Passage: Difficult terrain, ledge can collapse with DC 10 Dex save"
+      ]
+    },
+    {
+      "id": "overpass",
+      "name": "Overpass",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "A bridge guard post over the main passage.",
+      "boxed_text": "The stream passage continues up beyond another set of uneven steps ahead, bending eastward as it goes. A waterfall sounds out from a larger cavern somewhere ahead of you.",
+      "monsters": [
+        "goblin"
+      ],
+      "features": [
+        "Bridge: Spans 20 feet above stream, DC 15 Athletics to climb, AC 5, 10 HP",
+        "Flood: Goblins can release water surge, DC 10 Dex save or be swept to area 1, taking 1d6 damage"
+      ]
+    },
+    {
+      "id": "goblin_den",
+      "name": "Goblin Den",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "A common room and barracks for goblins.",
+      "boxed_text": "This large cave is divided in half by a ten-foot-high escarpment. A steep natural staircase leads from the lower portion to the upper ledge. The air is hazy with the smoke of a cooking fire, and pungent from the smell of poorly cured hides and unwashed goblins.",
+      "npcs": [
+        "sildar_hallwinter"
+      ],
+      "monsters": [
+        "goblin"
+      ],
+      "features": [
+        "Treasure: Yeemik has 3 gold teeth and 15 sp",
+        "Developments: Yeemik may parley or threaten Sildar"
+      ]
+    },
+    {
+      "id": "twin_pools_cave",
+      "name": "Twin Pools Cave",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "A cavern with two large pools of water.",
+      "boxed_text": "This cavern is half filled with two large pools of water. A narrow waterfall high in the eastern wall feeds the pool, which drains out the western end of the chamber to form the stream that flows out of the cave mouth below. Low fieldstone walls serve as dams holding the water in. A wide exit stands to the south, while two smaller passages lead west. The sound of the waterfall echoes through the cavern, making it difficult to hear.",
+      "monsters": [
+        "goblin"
+      ],
+      "features": [
+        "Rock Dams: Control water flow, can be used to flood passages"
+      ]
+    },
+    {
+      "id": "klargs_cave",
+      "name": "Klarg's Cave",
+      "type": "room",
+      "parent_id": "cragmaw_hideout",
+      "description": "The den of Klarg, the bugbear leader.",
+      "boxed_text": "Sacks and crates of looted provisions are piled up in the south end of this large cave. To the west, the floor slopes toward a narrow opening that descends into darkness. A larger opening leads north down a set of natural stone steps, the roar of falling water echoing from beyond. In the middle of the cavern, the coals of a large fire smolder.",
+      "monsters": [
+        "bugbear",
+        "wolf",
+        "goblin"
+      ],
+      "features": [
+        "Fire Pit: 1 fire damage on entry, 1d6 if prone",
+        "Natural Chimney: Leads to area 3",
+        "Treasure: 600 cp, 110 sp, 2 potions of healing, jade frog statuette (40 gp)"
+      ]
+    },
+    {
+      "id": "rescue_sildar",
+      "name": "Rescue Sildar",
+      "type": "quest",
+      "description": "Rescue Sildar Hallwinter from the goblins in the Cragmaw Hideout."
+    },
+    {
+      "id": "phandalin",
+      "name": "Phandalin",
+      "type": "location",
+      "description": "A small town where the characters can rest and gather information."
+    },
+    {
+      "id": "glasstaff",
+      "name": "Glasstaff",
+      "type": "npc",
+      "description": "The mysterious leader of the Redbrands, actually Iarno Albrek in disguise."
+    },
+    {
+      "id": "stonehill_inn",
+      "name": "Stonehill Inn",
+      "type": "location",
+      "description": "A modest inn in Phandalin where Sildar suggests the party secure lodgings.",
+      "boxed_text": "In the center of town stands a large, newly built roadhouse of fieldstone and rough-hewn timbers. The common room is filled with locals nursing mugs of ale or cider, all of them eyeing you with curiosity."
+    },
+    {
+      "id": "redbrand_ruffians",
+      "name": "Redbrand Ruffians",
+      "type": "encounter",
+      "description": "A confrontation with the Redbrands, who control Phandalin.",
+      "boxed_text": "The Sleeping Giant is a ramshackle taproom at the east end of town. Four human ruffians linger on the covered porch, perched on empty ale barrels or leaning against the wall. They all wear grimy scarlet cloaks, their sullen stares fixed on you as you approach.",
+      "monsters": [
+        "Redbrand ruffians"
+      ],
+      "mechanics": "Divide 400 XP equally among the characters if the party defeats the ruffians."
+    },
+    {
+      "id": "finding_cragmaw_castle",
+      "name": "Finding Cragmaw Castle",
+      "type": "quest",
+      "description": "Sildar offers a reward for locating Cragmaw Castle and defeating the tribe's chieftain."
+    },
+    {
+      "id": "finding_iarno",
+      "name": "Finding Iarno",
+      "type": "quest",
+      "description": "Sildar asks the characters to investigate Tresendar Manor to find Iarno Albrek."
+    },
+    {
+      "id": "barthen_provisions",
+      "name": "Barthen's Provisions",
+      "type": "location",
+      "description": "The biggest trading post in Phandalin, owned by Elmar Barthen."
+    },
+    {
+      "id": "edermath_orchard",
+      "name": "Edermath Orchard",
+      "type": "location",
+      "description": "Home of Daran Edermath, a retired adventurer and member of the Order of the Gauntlet."
+    },
+    {
+      "id": "old_owl_trouble",
+      "name": "Old Owl Trouble",
+      "type": "quest",
+      "description": "Daran Edermath asks the characters to investigate undead activity at Old Owl Well."
+    },
+    {
+      "id": "lionshield_coster",
+      "name": "Lionshield Coster",
+      "type": "location",
+      "description": "A trading post in Phandalin, run by Linene Graywind."
+    },
+    {
+      "id": "phandalin_miners_exchange",
+      "name": "Phandalin Miner's Exchange",
+      "type": "location",
+      "description": "A trading post and unofficial records office, run by Halia Thornton."
+    },
+    {
+      "id": "halia_job_offer",
+      "name": "Halia's Job Offer",
+      "type": "quest",
+      "description": "Halia Thornton offers 100 gp to eliminate the Redbrand leader, Glasstaff."
+    },
+    {
+      "id": "alderleaf_farm",
+      "name": "Alderleaf Farm",
+      "type": "location",
+      "description": "Home of Qelline Alderleaf, a helpful halfling farmer."
+    },
+    {
+      "id": "reidoth_the_druid",
+      "name": "Reidoth the Druid",
+      "type": "quest",
+      "description": "Qelline suggests visiting Reidoth for help finding Cragmaw Castle or Wave Echo Cave."
+    },
+    {
+      "id": "shrine_of_luck",
+      "name": "Shrine of Luck",
+      "type": "location",
+      "description": "Phandalin's only temple, dedicated to Tymora and overseen by Sister Garaele."
+    },
+    {
+      "id": "banshee_bargain",
+      "name": "The Banshee's Bargain",
+      "type": "quest",
+      "description": "Sister Garaele asks the characters to persuade a banshee named Agatha to answer a question about a spellbook."
+    },
+    {
+      "id": "townmasters_hall",
+      "name": "Townmaster's Hall",
+      "type": "location",
+      "description": "The administrative center of Phandalin, where Harbin Wester serves as townmaster.",
+      "boxed_text": "The townmaster's hall has sturdy stone walls, a pitched wooden roof, and a bell tower at the back. Posted on a board next to the front door is a notice written in Common. It reads: 'REWARD\u2014Orcs near Wyvern Tor! Those of a mind to face the orc menace should inquire within.' The notice bears the town's seal and an indecipherable signature."
+    },
+    {
+      "id": "orc_trouble",
+      "name": "Orc Trouble",
+      "type": "quest",
+      "description": "Harbin Wester offers 100 gp to deal with orcs near Wyvern Tor."
+    },
+    {
+      "id": "tresendar_manor",
+      "name": "Tresendar Manor",
+      "type": "location",
+      "description": "An ancient manor at the east edge of town, now a Redbrand stronghold."
+    },
+    {
+      "id": "redbrand_hideout",
+      "name": "Redbrand Hideout",
+      "type": "dungeon",
+      "description": "The Redbrands' base under Tresendar Manor."
+    },
+    {
+      "id": "cellar",
+      "name": "Cellar",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A large storage cellar beneath Tresendar Manor.",
+      "boxed_text": "The door opens onto a five-foot-wide landing fifteen feet above a large cellar, with stone steps descending to the floor in two short flights. Another door stands beneath the stairs to the north. A large stone cistern occupies the western part of the room, whose walls are lined with kegs and barrels.",
+      "features": [
+        "Cistern: Clean and filled with cold, fresh water, 10 feet deep.",
+        "Secret Door: Located in the southwest corner of the room.",
+        "Treasure: Waterproof satchel with potion of healing, potion of invisibility, 50 gp, and travel clothing."
+      ]
+    },
+    {
+      "id": "barracks",
+      "name": "Barracks",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A storeroom used as living quarters for Redbrand ruffians.",
+      "boxed_text": "This appears to be a storeroom pressed into service as living quarters. Two double bunks stand against the wall near the door, while barrels and crates fill the southern half of the chamber.",
+      "monsters": [
+        "Redbrand ruffians"
+      ],
+      "features": [
+        "Treasure: Belt pouches with 16 sp, 7 gp; 12 sp, 5 gp; 15 ep, two garnets (10 gp each)."
+      ]
+    },
+    {
+      "id": "trapped_hall",
+      "name": "Trapped Hall",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A wide hall with a trap.",
+      "boxed_text": "Doors stand closed to the north and south, with a crumbling mound of rubble partially obscuring the southern hall. To the east, a broad corridor ends in two more doors leading south and east. The corridor is cluttered with dusty rubble and fallen plaster from a partial collapse of the ceiling overhead.",
+      "features": [
+        "Trap: Copper tripwire triggers a cave-in, DC 10 Dex save or take 3d6 bludgeoning damage"
+      ]
+    },
+    {
+      "id": "tresendar_crypts",
+      "name": "Tresendar Crypts",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A mausoleum for the Tresendar family, guarded by skeletons.",
+      "boxed_text": "Three large stone sarcophagi stand within this dusty crypt, and propped up against each sarcophagus is a human skeleton clad in bits of rusty mail. False columns along the walls are carved in the image of spreading oak trees. The double doors in the southeast corner are sheathed in tarnished copper plate.",
+      "monsters": [
+        "skeletons"
+      ],
+      "features": [
+        "Treasure: Ornate gold bracelet (90 gp) in the female sarcophagus."
+      ]
+    },
+    {
+      "id": "slave_pens",
+      "name": "Slave Pens",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "Holding area for captives intended for slavery.",
+      "boxed_text": "This long room is partitioned into three areas, with iron bars walling off the north and south. Filthy straw lines the floors of those cells, the hinged doors of which are secured by chains and padlocks. A pair of disheveled human women are held in the cell to the south, while a human boy is confined to the north. All are dressed in plain gray tunics and have iron collars fitted around their necks.",
+      "monsters": [
+        "Redbrand Ruffians"
+      ],
+      "features": [
+        "Cell Doors: Simple locks, DC 10 Dexterity check to pick, DC 22 Strength check to break."
+      ]
+    },
+    {
+      "id": "armory",
+      "name": "Armory",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A room stocked with weapons and armor for the Redbrands.",
+      "boxed_text": "Racks of weapons line the walls of this chamber, including spears, swords, crossbows, and bolts. A dozen dirty red cloaks hang from hooks by the door."
+    },
+    {
+      "id": "storeroom_work_area",
+      "name": "Storeroom and Work Area",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A storage and work area for the Redbrands' stolen goods.",
+      "boxed_text": "This area is the north end of a large natural cavern, but it has been finished with dressed stone block walls and a flagstone floor. Several barrels are stored against the walls here, along with a number of empty crates, straw for packing, hammers, pry bars, and nails.",
+      "features": [
+        "Treasure: Thirty beaver pelts (2 gp each)."
+      ]
+    },
+    {
+      "id": "crevasse",
+      "name": "Crevasse",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A large natural cavern with a crevasse, guarded by a nothic.",
+      "boxed_text": "A cold breeze fills this large natural cavern, carrying with it the faint scent of decaying flesh. A crevasse divides the cavern and is flanked by two rough stone columns that support the twenty-foot-high ceiling. Two arched wooden bridges span the chasm.",
+      "monsters": [
+        "nothic"
+      ],
+      "features": [
+        "Bridges: Made of wooden planks, no rails, south bridge rigged to collapse.",
+        "Crevasse: 5 to 10 feet wide, 20 feet deep, rough walls easily climbed.",
+        "Treasure: Chest with 160 sp, 120 gp, five malachite gems (15 gp each), two potions of healing, scroll of augury, +1 longsword 'Talon'."
+      ]
+    },
+    {
+      "id": "guard_barracks",
+      "name": "Guard Barracks",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A small barracks with a brazier and straw pallets.",
+      "boxed_text": "A stone brazier full of coals glows in the middle of this small barracks. Four straw pallets are lined up along the east wall. The wall to the south has collapsed, but a barred wooden door in that direction is still clear. A curtain hangs in an archway to the north.",
+      "monsters": [
+        "hobgoblin",
+        "hobgoblin"
+      ]
+    },
+    {
+      "id": "common_room",
+      "name": "Common Room",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "The headquarters and meeting room for the Redbrands.",
+      "boxed_text": "Several worn tables and chairs are scattered around this large room. Wooden benches are drawn up against walls decorated with draperies of brown and red, and several ale kegs are propped up and tapped.",
+      "monsters": [
+        "Redbrand ruffians"
+      ],
+      "features": [
+        "Treasure: 75 cp, 55 sp, 22 ep, 15 gp, gold earring with ruby (30 gp)."
+      ]
+    },
+    {
+      "id": "wizards_workshop",
+      "name": "Wizard's Workshop",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "A workshop for brewing potions, guarded by Iarno's rat familiar.",
+      "boxed_text": "This room appears to be a wizard's workshop. A rat scurries across the floor and takes refuge under a large worktable set up with alembics, retorts, distillation coils, and other alchemical devices, all of it stewing and bubbling away. Bookshelves are crowded with sheaves of parchment and strange-looking tomes.",
+      "features": [
+        "Books and Notes: Alchemical texts, tome in Dwarvish about the Lost Mine of Phandelver.",
+        "Treasure: Bottles of mercury, dragon bile, and powdered nightshade (25 gp each)."
+      ]
+    },
+    {
+      "id": "glasstaff_quarters",
+      "name": "Glasstaff's Quarters",
+      "type": "room",
+      "parent_id": "redbrand_hideout",
+      "description": "The personal quarters of Iarno 'Glasstaff' Albrek.",
+      "boxed_text": "The walls of this bedchamber are covered with drapes of scarlet cloth. The furnishings include a small writing desk with matching chair, a comfortable-looking bed, and a wooden chest at the foot of the bed.",
+      "features": [
+        "Treasure: Chest with 180 sp, 130 gp, silk pouch with gems, scroll of charm person, scroll of fireball, staff of defense."
+      ]
+    },
+    {
+      "id": "the_spiders_web",
+      "name": "The Spider's Web",
+      "type": "story_beat",
+      "description": "The characters follow up on leads and quests around Phandalin to uncover larger plots."
+    },
+    {
+      "id": "conyberry",
+      "name": "Conyberry",
+      "type": "location",
+      "description": "A ruined town sacked by barbarians, near Agatha's lair."
+    },
+    {
+      "id": "agathas_lair",
+      "name": "Agatha's Lair",
+      "type": "location",
+      "description": "The lair of the banshee Agatha, located near Conyberry.",
+      "boxed_text": "The forest grows dark and still as the trail winds deeper into the trees. Heavy vines and thick layers of moss drape the branches, and the air is noticeably colder than it was in the ruined village. Rounding a bend in the trail, you see a screen made from the warped branches of trees standing close together, woven into a dome-like shelter in the shadows. A low doorway leads inside."
+    },
+    {
+      "id": "old_owl_well",
+      "name": "Old Owl Well",
+      "type": "location",
+      "description": "A ruined watchtower with a well, occupied by Hamun Kost and guarded by zombies.",
+      "boxed_text": "As you crest a low ridge, you spy the crumbling ruins of an old watchtower standing amid the rugged hills. The place is so old that the walls are only mounds of rubble enclosing a courtyard of sorts, adjacent to the broken stump of an old tower. A colorful tent has been set up in the middle of the courtyard, but no one is in sight."
+    },
+    {
+      "id": "thundertree",
+      "name": "Ruins of Thundertree",
+      "type": "location",
+      "description": "An abandoned village with mutated plants and zombies, and a green dragon.",
+      "boxed_text": "Gradually, the trail becomes an old, overgrown lane winding between dilapidated buildings choked in vines and brush. Ahead of you, in the middle of the settlement, rises a steep hill, upon which stands a stone tower with a partially collapsed roof and an adjoining cottage. A dirt road hugs the base of the hill and wends its way between old stone houses, many of which are roofless ruins with interiors open to the weather. Other buildings appear more or less intact. The whole place is eerily silent."
+    },
+    {
+      "id": "wyvern_tor",
+      "name": "Wyvern Tor",
+      "type": "location",
+      "description": "A crag with an orc camp led by Brughor Axe-Biter and an ogre ally.",
+      "boxed_text": "The faint smell of smoke hangs on the air as you ascend a rugged ridge on the lower slopes of the hill. Fifty yards away, a cave mouth opens up at the bottom of a ravine. Hunkered down by a boulder twenty yards outside the cave, keeping watch, is a single orc."
+    },
+    {
+      "id": "cragmaw_castle",
+      "name": "Cragmaw Castle",
+      "type": "dungeon",
+      "description": "A stronghold of the Cragmaw tribe, ruled by King Grol."
+    },
+    {
+      "id": "castle_entrance",
+      "name": "Castle Entrance",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "The main entrance to Cragmaw Castle.",
+      "boxed_text": "The castle consists of seven crumbling towers of different sizes and heights, but the upper stories are all in varying states of collapse. A short flight of steps leads up to a terrace in front of the main entryway. Past the wreckage of a pair of sundered doors lies a shadowed hall. Round towers loom over the entranceway, with dark arrow slits looking down on the terrace."
+    },
+    {
+      "id": "archer_post",
+      "name": "Archer Post",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A small room with arrow slits for defense.",
+      "boxed_text": "This small room is littered with debris. The arrow slit opposite the door offers a fine field of fire over the terrace in front of the castle gates.",
+      "monsters": [
+        "goblin",
+        "goblin"
+      ]
+    },
+    {
+      "id": "ruined_barracks",
+      "name": "Ruined Barracks",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A heap of rubble with bedrolls.",
+      "boxed_text": "The southwest tower of the castle is little more than a heap of rubble. Several ragged bedrolls are scattered across the remaining floor space, and a small, twisting passage leads east through the ruins.",
+      "monsters": [
+        "goblin",
+        "goblin",
+        "goblin"
+      ]
+    },
+    {
+      "id": "storeroom",
+      "name": "Storeroom",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A storage area with provisions and Sildar's gear.",
+      "boxed_text": "Old casks of salted meat and sacks of rotting grain fill this storage area. Among the supplies, you see a bloody suit of chain mail, a heavy crossbow, and an unsheathed longsword with the emblem of Neverwinter worked into its hilt."
+    },
+    {
+      "id": "hobgoblin_barracks",
+      "name": "Hobgoblin Barracks",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A barracks for hobgoblins with weapons on the walls.",
+      "boxed_text": "Four plain straw pallets and bedrolls are lined up on the floor of this barracks. Brackets on the walls hold a number of weapons\u2014spears, swords, morningstars, and more. The north wall shows signs of damage, but the floor is swept clean of rubble.",
+      "monsters": [
+        "hobgoblin",
+        "hobgoblin",
+        "hobgoblin",
+        "hobgoblin"
+      ]
+    },
+    {
+      "id": "banquet_hall",
+      "name": "Banquet Hall",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A large hall used as a goblin mess hall.",
+      "boxed_text": "The western portion of this large hall ends in a wall of rubble, but the remainder is still intact. This must once have been the castle's banquet hall, with a soaring ceiling twenty-five feet high. Two large wooden tables with plain benches stand in the middle of the room, and a brass brazier full of glowing coals is tucked into one corner. Dirty dishes, half-full stewpots, moldy heels of bread, and gnawed bones cover the tables.",
+      "monsters": [
+        "goblin",
+        "goblin",
+        "goblin",
+        "goblin",
+        "goblin",
+        "goblin",
+        "goblin"
+      ]
+    },
+    {
+      "id": "dark_hall",
+      "name": "Dark Hall",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A high, narrow hall that might have been a chapel.",
+      "boxed_text": "This high, narrow hall looks as if it might have been part of a chapel or shrine at one time. Angelic figures are sculpted along the room's upper reaches, looking down on the floor below. To the north, heavy curtains block a matching pair of archways. Between the archways is a cracked but ornately carved stone brazier.",
+      "monsters": [
+        "grick"
+      ],
+      "features": [
+        "Treasure: Gold statuette of a sun elf (100 gp) with divination magic, acts as augury once"
+      ]
+    },
+    {
+      "id": "goblin_shrine",
+      "name": "Goblin Shrine",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A shrine rededicated to Maglubiyet.",
+      "boxed_text": "This chamber occupies the northern tower of the castle. A stone altar stands in the middle of the room, covered with bloodstained black cloth. Golden ritual implements\u2014a chalice, a knife, and a censer\u2014are carefully arranged on top of the altar. Two archways to the south are covered with heavy curtains.",
+      "monsters": [
+        "goblin",
+        "goblin",
+        "goblin"
+      ],
+      "features": [
+        "Treasure: Chalice (150 gp), knife (60 gp), censer (120 gp)"
+      ]
+    },
+    {
+      "id": "postern_gate",
+      "name": "Postern Gate",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A locked side entrance to the castle.",
+      "boxed_text": "On the south side of the old castle, an overgrown path leads to a passage that climbs up into the wall. A large iron door stands here, sheltered from direct outside attack. Arrow slits ten feet above the ground overlook the path."
+    },
+    {
+      "id": "ruined_tower",
+      "name": "Ruined Tower",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A collapsed tower with a hidden entrance.",
+      "boxed_text": "This tower has almost completely collapsed, although the ground floor still has a little open space. Rotting crates and ancient barrels show that provisions were once stored here. A heavy curtain blocks a crumbling area to the south, and an intact door leads east. To the north, a short passage through the rubble ends before a screen of canvas."
+    },
+    {
+      "id": "owlbear_tower",
+      "name": "Owlbear Tower",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "A tower with an owlbear trapped inside.",
+      "boxed_text": "The upper floors of this tower have collapsed to create a hollow silo at least thirty feet high, and the upper reaches of the room are lost in shadows. Dust, rubble, and broken glass cover the floor, and old worktables and bookshelves lie strewn to the south. In the middle of the room is a hulking beast that looks like a mangy bear with an owl's head. It rears up and roars when it sees you.",
+      "monsters": [
+        "owlbear"
+      ],
+      "features": [
+        "Treasure: Chest with 90 ep, 120 gp, potion of healing, scroll of silence, scroll of revivify"
+      ]
+    },
+    {
+      "id": "kings_quarters",
+      "name": "King's Quarters",
+      "type": "room",
+      "parent_id": "cragmaw_castle",
+      "description": "The living space of King Grol, with Gundren Rockseeker held captive.",
+      "boxed_text": "This chamber has been set up as a crude living space, with thick furs thrown on the floor to serve as carpets, old trophies hanging on the walls, a large bed to the north, and a brazier of coals burning brightly. A round table with several chairs stands to the south near the door. Near the table, on the floor, is an unconscious dwarf who looks badly beaten.",
+      "monsters": [
+        "bugbear",
+        "wolf",
+        "doppelganger"
+      ],
+      "npcs": [
+        "gundren_rockseeker"
+      ],
+      "features": [
+        "Treasure: Leather sack with 220 sp, 160 ep, three potions of healing, Gundren's map"
+      ]
+    },
+    {
+      "id": "sister_garaele",
+      "name": "Sister Garaele",
+      "type": "npc",
+      "description": "A priestess who wants the characters to seek out Agatha the banshee."
+    },
+    {
+      "id": "daran_edermath",
+      "name": "Daran Edermath",
+      "type": "npc",
+      "description": "A retired adventurer who wants the characters to investigate Old Owl Well."
+    },
+    {
+      "id": "qelline_alderleaf",
+      "name": "Qelline Alderleaf",
+      "type": "npc",
+      "description": "A farmer who suggests consulting with the druid Reidoth in Thundertree."
+    },
+    {
+      "id": "harbin_wester",
+      "name": "Harbin Wester",
+      "type": "npc",
+      "description": "The townmaster of Phandalin who wants the characters to deal with the orcs at Wyvern Tor."
+    },
+    {
+      "id": "hamun_kost",
+      "name": "Hamun Kost",
+      "type": "npc",
+      "description": "An evil mage exploring Old Owl Well, guarded by zombies."
+    },
+    {
+      "id": "reidoth",
+      "name": "Reidoth",
+      "type": "npc",
+      "description": "A druid who visits Thundertree and knows the location of Cragmaw Castle."
+    },
+    {
+      "id": "venomfang",
+      "name": "Venomfang",
+      "type": "npc",
+      "description": "A young green dragon that has claimed the tower in Thundertree."
+    },
+    {
+      "id": "seek_agatha",
+      "name": "Seek Agatha",
+      "type": "quest",
+      "description": "Sister Garaele wants the characters to ask Agatha about Bowgentle's spellbook."
+    },
+    {
+      "id": "investigate_old_owl_well",
+      "name": "Investigate Old Owl Well",
+      "type": "quest",
+      "description": "Daran Edermath wants the characters to find out who is lurking near the ruins at Old Owl Well."
+    },
+    {
+      "id": "consult_reidoth",
+      "name": "Consult Reidoth",
+      "type": "quest",
+      "description": "Qelline Alderleaf suggests consulting with Reidoth in Thundertree for information on Cragmaw Castle and Wave Echo Cave."
+    },
+    {
+      "id": "deal_with_orcs",
+      "name": "Deal with Orcs",
+      "type": "quest",
+      "description": "Harbin Wester wants the characters to chase away the orcs at Wyvern Tor."
+    },
+    {
+      "id": "rescue_gundren",
+      "name": "Rescue Gundren",
+      "type": "quest",
+      "description": "Sildar Hallwinter wants the characters to find Cragmaw Castle, rescue Gundren Rockseeker, and retrieve his map."
+    },
+    {
+      "id": "wave_echo_cave",
+      "name": "Wave Echo Cave",
+      "type": "dungeon",
+      "description": "A lost mine of the Phandelver's Pact, now explored by Nezznar the Black Spider."
+    },
+    {
+      "id": "cave_entrance",
+      "name": "Cave Entrance",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "The entrance to Wave Echo Cave, where the Rockseekers camped.",
+      "boxed_text": "The entrance tunnel leads into a large cavern supported by a natural pillar of rock and containing three stalagmites. In the western part of the cave, behind the column of rock, are three bedrolls and a heap of ordinary supplies\u2014sacks of flour, bags of salt, casks of salted meat, lanterns, flasks of lamp oil, pickaxes, shovels, and other gear. Amid the supplies, you see the body of a dwarf miner, dead for at least a week.\n\nThe northeastern section of the cavern has collapsed, forming a ten-foot-wide, twenty-foot-deep pit. A sturdy hemp rope is tied off around a nearby stalagmite and dangles down the side of the pit, at the bottom of which is a rough-hewn tunnel heading northwest and east.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": [
+        "Open Pit: Climbing up or down the wall of the pit without a rope requires a successful DC 15 Strength (Athletics) check. A character who fails the check by 5 or more falls and takes 1d6 bludgeoning damage per 10 feet fallen, landing prone at the bottom.",
+        "Treasure: Tharden wears a pair of boots of striding and springing."
+      ]
+    },
+    {
+      "id": "mine_tunnels",
+      "name": "Mine Tunnels",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A maze of passages in the original mine site.",
+      "boxed_text": "This area consists of numerous intersecting passages. The ceilings here are only six feet high, and several of the passages end in partially excavated rock faces.",
+      "npcs": [],
+      "monsters": [
+        "ochre jelly"
+      ],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "old_entrance",
+      "name": "Old Entrance",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "The original entrance to Wave Echo Cave, now buried.",
+      "boxed_text": "Many tunnels intersect at this natural, thirty-foot-high cavern. The walls are carved with simple reliefs showing dwarf and gnome miners hard at work. Below them, nearly two dozen skeletons in rusted scraps of armor are scattered across the cavern floor. Some are dwarf skeletons, while others are orc remains. Half a dozen large brass lanterns stand in niches or on ledges around the cavern, but none are lit.",
+      "npcs": [],
+      "monsters": [
+        "stirges"
+      ],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "old_guardroom",
+      "name": "Old Guardroom",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A guardroom overrun during the orc attack.",
+      "boxed_text": "Splintered stone benches and heaps of rubble from a partially collapsed ceiling fill this room. Amid ruined stone bunks and toppled weapon racks are the bones of several dwarves and orcs.",
+      "npcs": [],
+      "monsters": [
+        "skeletons"
+      ],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "assayers_office",
+      "name": "Assayers' Office",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "Where ore samples were weighed and assessed.",
+      "boxed_text": "This chamber was once an office or storeroom of some kind. A large stone counter bisects the room, set with three dusty balance scales made of iron. Cubbyholes carved into the north wall are stuffed with dusty paper scraps. Several long-dead corpses\u2014gnomes and orcs by their look\u2014are sprawled across the floor.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": [
+        "Treasure: Behind the counter sits a locked iron strongbox, requiring thieves' tools and a successful DC 20 Dexterity check to open. Contains 600 cp, 180 sp, 90 ep, and 60 gp."
+      ]
+    },
+    {
+      "id": "south_barracks",
+      "name": "South Barracks",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A miners' barracks now occupied by ghouls.",
+      "boxed_text": "Old stone bunks in orderly rows line the walls of this chamber, and a corroded iron brazier full of old coals stands near the middle of the room. The bones of a half dozen dwarves and orcs lie strewn about, clad in scraps of armor. Three gray, hunched figures squat among the remains, pawing at the scraps and gnawing on the bones.",
+      "npcs": [],
+      "monsters": [
+        "ghouls"
+      ],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "ruined_storeroom",
+      "name": "Ruined Storeroom",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A storage area with a secure resting place.",
+      "boxed_text": "The eastern wall of this chamber has collapsed into a mass of rubble. To the north, a door stands ajar, leading to a good-sized storeroom. Dusty kegs are tucked neatly against the walls, all of them cracked and split open from age.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "fungi_cavern",
+      "name": "Fungi Cavern",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A cavern with dense carpets of fungi.",
+      "boxed_text": "Dense carpets of weird fungi cover large sections of the floor in this cavern. The growth includes puffballs a foot across, weird shelf fungus growing on stalagmites, and large stalks and caps a good five feet tall. Some of the puffballs glow with an eerie green phosphorescence.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": [
+        "Poison Gas: Whenever a creature attempts to cross the cavern, the carpets of fungi release poisonous gas. DC 11 Constitution saving throw or take 3d6 poison damage and be poisoned for 10 minutes."
+      ]
+    },
+    {
+      "id": "great_cavern",
+      "name": "Great Cavern",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A large cavern once used as a banquet room.",
+      "boxed_text": "Steep escarpments divide this large cavern into three sections\u2014high ledges at either end, and a lower section in the middle. Carved stone stairs climb up to the ledges. Two large tables stand in the middle section, along with a pair of old braziers. A smaller table stands on the eastern ledge. The skeletal remains of dozens of dead warriors\u2014dwarves, gnomes, orcs, and ogres\u2014attest to the fierceness of the fighting that took place here long ago.",
+      "npcs": [],
+      "monsters": [
+        "ghouls"
+      ],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "dark_pool",
+      "name": "Dark Pool",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A water-filled cave with hidden treasure.",
+      "boxed_text": "A still pool fills much of this cavern. The water is dark, revealing little of what might lie within. The shore of the pool consists of a thin layer of broken shells from strange, pale mussels, and a fishy odor hangs in the air.\n\nA passage leads south from this area, and a set of steps climbs up to the east. A sluggish stream flows out of the cave to the northeast.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": [
+        "Treasure: The skeleton wears two platinum rings (75 gp each) and clutches a wand of magic missiles."
+      ]
+    },
+    {
+      "id": "north_barracks",
+      "name": "North Barracks",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A barracks now occupied by bugbears.",
+      "boxed_text": "Old stone bunks line the walls of this barracks, which is lit and heated by a glowing iron brazier in the middle of the room.",
+      "npcs": [],
+      "monsters": [
+        "bugbears"
+      ],
+      "mechanics": null,
+      "features": [
+        "Treasure: The largest bugbear carries a pouch containing 15 cp, 13 ep, and a potion of vitality."
+      ]
+    },
+    {
+      "id": "smelter_cavern",
+      "name": "Smelter Cavern",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A chamber with a blast furnace and undead guardians.",
+      "boxed_text": "A blast furnace and a mechanical bellows powered by a waterwheel dominate this large chamber. The furnace is cold and dark, but heaps of coal are piled nearby, along with carts full of unrefined ore. The waterwheel sits in a ten-foot-wide channel cut into the floor of the room, but the channel is dry. Passages exit to the west, south, and east. The empty channel exits to the north and east.\n\nMore than a dozen withered corpses are scattered around the room. These slain dwarves and orcs are still wearing the remnants of their armor. Floating above them is a skull engulfed in green flame.",
+      "npcs": [],
+      "monsters": [
+        "zombies",
+        "flameskull"
+      ],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "starry_cavern",
+      "name": "Starry Cavern",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A cavern with glittering minerals and two structures.",
+      "boxed_text": "Glittering minerals in the ceiling of this large cavern catch the light and send it back to create the impression of a starry night sky. Dozens of skeletons\u2014many crushed under fallen debris\u2014are scattered across the floor.\n\nThe cave is large enough that it contains two freestanding structures. Each of these stone buildings is proportioned for human use, as opposed to the dwarf-sized doorways and furnishings you've seen elsewhere in the mines. Both structures have battered and blackened masonry walls, their double doors cracked and scorched. The cavern is divided by an escarpment, into which a flight of stairs has been cut.\n\nPassages lead out of this area to the north, south, and west.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "wizards_quarters",
+      "name": "Wizards' Quarters",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A room damaged by a destructive blast, haunted by Mormesk the wraith.",
+      "boxed_text": "Dust, ash, walls blackened by fire, and heaps of debris beneath the sagging ceiling show that this room was damaged by a destructive blast. The furnishings\u2014tables, chairs, bookshelves, beds\u2014are charred or splintered, but otherwise well preserved. A scorched iron chest stands near the foot of one of the beds.",
+      "npcs": [
+        "mormesk_the_wraith"
+      ],
+      "monsters": [],
+      "mechanics": null,
+      "features": [
+        "Treasure: The scorched chest is unlocked and contains 1,100 cp, 160 sp, 50 ep, three diamonds (100 gp each), and a wooden pipe adorned with platinum filigree (150 gp).",
+        "Treasure: A handful of magically preserved tomes remain on the shelves. One has a map sewn into its cover."
+      ]
+    },
+    {
+      "id": "forge_of_spells",
+      "name": "Forge of Spells",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A workshop where magic was channeled to enchant items, guarded by a spectator.",
+      "boxed_text": "This large workshop was badly damaged by the ancient spell battle that laid waste to the mine. Worktables taking up two corners of the room are scorched, and the plaster has been burned off the masonry walls. In the middle of the room, a stone pedestal holds a small brazier in which an eerie green flame dances and crackles. The brazier and its pedestal appear to have been untouched by the forces that destroyed this area.\n\nBehind the brazier of green flame floats a spherical creature measuring roughly four feet in diameter. Four eyestalks protrude from its central mass, two on each side. In the center of the body is a large eye that stares at you. \"Hello,\" says a thick, burbling voice inside your head.",
+      "npcs": [],
+      "monsters": [
+        "spectator"
+      ],
+      "mechanics": null,
+      "features": [
+        "Brazier of Green Flame: A successful DC 15 Intelligence (Arcana) check identifies the brazier as the source of the magic that suffuses the surrounding caverns. Any nonmagical weapon or armor bathed in the green flame for at least 1 minute becomes a +1 weapon or +1 armor, respectively, for 1d12 hours.",
+        "Treasure: On the worktable in the southeast corner of the room are the last items the spectator was charged to protect: Lightbringer and Dragonguard."
+      ]
+    },
+    {
+      "id": "booming_cavern",
+      "name": "Booming Cavern",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A cavern with a surging body of water, source of the mine's echoing waves.",
+      "boxed_text": "A narrow ledge overlooks a large cavern that houses a surging, seething body of water. The rhythmic booming heard throughout the mines is louder here. At regular intervals, a fresh surge of water funnels into this chamber and slams against the wall just below the ledge. The echo suggests that this cave might be one arm of a much larger cavern to the northeast.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "old_streambed",
+      "name": "Old Streambed",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A low passage that was once a streambed.",
+      "boxed_text": "This passageway is barely four feet high and is obstructed by rounded boulders and pebbles. It might have been a streambed, though no water flows here now.",
+      "npcs": [],
+      "monsters": [],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "collapsed_cavern",
+      "name": "Collapsed Cavern",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A cavern with a wide rift, guarded by bugbears and a doppelganger.",
+      "boxed_text": "A wide rift fills the eastern half of this cavern. A stream pours out of the west wall, then tumbles down into the rift and flows out again to the north. Several ropes are secured to iron stakes along on the western edge of the rift, leading down to the chasm floor.",
+      "npcs": [
+        "vhalak"
+      ],
+      "monsters": [
+        "bugbears"
+      ],
+      "mechanics": null,
+      "features": [
+        "Rift: The rift is 20 feet deep. Climbing up or down without using a rope requires a successful DC 10 Strength (Athletics) check. A creature that fails the check by 5 or more falls and takes 1d6 bludgeoning damage per 10 feet fallen, landing prone at the bottom.",
+        "Treasure: Buried under heavy rubble at the bottom of the rift is the crushed skeleton of a dwarf wearing gauntlets of ogre power."
+      ]
+    },
+    {
+      "id": "temple_of_dumathoin",
+      "name": "Temple of Dumathoin",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "Nezznar's headquarters in the mine, with a statue of Dumathoin.",
+      "boxed_text": "Six cracked marble pillars line the walls of this hall, at the north end of which stands a nine-foot-tall statue of a dwarf seated on a throne, a mighty stone warhammer across his lap. Large emeralds gleam in the statue's eyes.\n\nThe dust and debris covering the floor has been swept to one side, and a campsite of sorts now spreads in front of the statue. Half a dozen bedrolls and packs are neatly arranged around a rough-built fire pit. A wooden table stands on the west side of the room between two pillars.",
+      "npcs": [
+        "nezznar"
+      ],
+      "monsters": [
+        "giant spiders"
+      ],
+      "mechanics": null,
+      "features": [
+        "Statue: The statue depicts Dumathoin, the dwarven god of mining. The jewels are clever fakes made of worthless glass. A powerful spell protects them, and a detect magic spell reveals a strong aura of abjuration magic surrounding the statue.",
+        "Table: The table is strewn with notes and maps showing Nezznar's efforts at exploring the mine so far. A black leather sack of treasure is amid the papers.",
+        "Treasure: Nezznar carries a potion of healing and a spider staff. The sack contains 190 ep, 130 gp, 15 pp, nine small gemstones (10 gp each), and a dwarven ale mug made of hammered electrum (100 gp)."
+      ]
+    },
+    {
+      "id": "priests_quarters",
+      "name": "Priests' Quarters",
+      "type": "room",
+      "parent_id": "wave_echo_cave",
+      "description": "A room used as a cell by Nezznar, containing Nundro Rockseeker.",
+      "boxed_text": "Dusty draperies adorn the walls of this room, which also contains a bed and brazier. A badly disheveled dwarf lies bound and unconscious on the cold stone floor.",
+      "npcs": [
+        "nundro_rockseeker"
+      ],
+      "monsters": [],
+      "mechanics": null,
+      "features": []
+    },
+    {
+      "id": "nezznar",
+      "name": "Nezznar the Black Spider",
+      "type": "npc",
+      "description": "A drow villain searching for the Forge of Spells in Wave Echo Cave."
+    },
+    {
+      "id": "mormesk_the_wraith",
+      "name": "Mormesk the Wraith",
+      "type": "npc",
+      "description": "The restless spirit of a powerful mage who died in Wave Echo Cave."
+    },
+    {
+      "id": "vhalak",
+      "name": "Vhalak",
+      "type": "npc",
+      "description": "A doppelganger supervising the excavation in the Collapsed Cavern."
+    },
+    {
+      "id": "nundro_rockseeker",
+      "name": "Nundro Rockseeker",
+      "type": "npc",
+      "description": "The youngest of the Rockseeker brothers, held captive by Nezznar."
+    },
+    {
+      "id": "rescue_nundro",
+      "name": "Rescue Nundro",
+      "type": "quest",
+      "description": "Rescue Nundro Rockseeker from Nezznar's captivity."
+    },
+    {
+      "id": "defeat_nezznar",
+      "name": "Defeat Nezznar",
+      "type": "quest",
+      "description": "Defeat Nezznar the Black Spider and stop his plans in Wave Echo Cave."
+    }
+  ],
+  "edges": [
+    {
+      "source": "neverwinter",
+      "target": "triboar_trail",
+      "type": "leads_to"
+    },
+    {
+      "source": "gundren_rockseeker",
+      "target": "escort_wagon_to_phandalin",
+      "type": "gives_quest"
+    },
+    {
+      "source": "goblin_ambush",
+      "target": "goblin_trail",
+      "type": "leads_to"
+    },
+    {
+      "source": "goblin_trail",
+      "target": "cragmaw_hideout",
+      "type": "leads_to"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "cave_mouth",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "goblin_blind",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "kennel",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "steep_passage",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "overpass",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "goblin_den",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "twin_pools_cave",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "klargs_cave",
+      "type": "contains"
+    },
+    {
+      "source": "cave_mouth",
+      "target": "goblin_blind",
+      "type": "leads_to"
+    },
+    {
+      "source": "cave_mouth",
+      "target": "kennel",
+      "type": "leads_to"
+    },
+    {
+      "source": "cave_mouth",
+      "target": "steep_passage",
+      "type": "leads_to"
+    },
+    {
+      "source": "steep_passage",
+      "target": "overpass",
+      "type": "leads_to"
+    },
+    {
+      "source": "overpass",
+      "target": "twin_pools_cave",
+      "type": "leads_to"
+    },
+    {
+      "source": "kennel",
+      "target": "klargs_cave",
+      "type": "leads_to"
+    },
+    {
+      "source": "goblin_den",
+      "target": "rescue_sildar",
+      "type": "triggers"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "rescue_sildar",
+      "type": "gives_quest"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "goblin_den",
+      "type": "involves"
+    },
+    {
+      "source": "gundren_rockseeker",
+      "target": "goblin_ambush",
+      "type": "involves"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "goblin_ambush",
+      "type": "involves"
+    },
+    {
+      "source": "phandalin",
+      "target": "stonehill_inn",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "barthen_provisions",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "edermath_orchard",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "lionshield_coster",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "phandalin_miners_exchange",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "alderleaf_farm",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "shrine_of_luck",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "townmasters_hall",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "tresendar_manor",
+      "type": "leads_to"
+    },
+    {
+      "source": "tresendar_manor",
+      "target": "redbrand_hideout",
+      "type": "leads_to"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "cellar",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "barracks",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "trapped_hall",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "tresendar_crypts",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "slave_pens",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "armory",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "storeroom_work_area",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "crevasse",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "guard_barracks",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "common_room",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "wizards_workshop",
+      "type": "contains"
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "glasstaff_quarters",
+      "type": "contains"
+    },
+    {
+      "source": "cellar",
+      "target": "barracks",
+      "type": "leads_to"
+    },
+    {
+      "source": "barracks",
+      "target": "trapped_hall",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "tresendar_crypts",
+      "type": "leads_to"
+    },
+    {
+      "source": "tresendar_crypts",
+      "target": "slave_pens",
+      "type": "leads_to"
+    },
+    {
+      "source": "slave_pens",
+      "target": "armory",
+      "type": "leads_to"
+    },
+    {
+      "source": "armory",
+      "target": "storeroom_work_area",
+      "type": "leads_to"
+    },
+    {
+      "source": "storeroom_work_area",
+      "target": "crevasse",
+      "type": "leads_to"
+    },
+    {
+      "source": "crevasse",
+      "target": "guard_barracks",
+      "type": "leads_to"
+    },
+    {
+      "source": "guard_barracks",
+      "target": "common_room",
+      "type": "leads_to"
+    },
+    {
+      "source": "common_room",
+      "target": "wizards_workshop",
+      "type": "leads_to"
+    },
+    {
+      "source": "wizards_workshop",
+      "target": "glasstaff_quarters",
+      "type": "leads_to"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "stonehill_inn",
+      "type": "involves"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "finding_cragmaw_castle",
+      "type": "gives_quest"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "finding_iarno",
+      "type": "gives_quest"
+    },
+    {
+      "source": "glasstaff",
+      "target": "redbrand_ruffians",
+      "type": "involves"
+    },
+    {
+      "source": "edermath_orchard",
+      "target": "old_owl_trouble",
+      "type": "gives_quest"
+    },
+    {
+      "source": "phandalin_miners_exchange",
+      "target": "halia_job_offer",
+      "type": "gives_quest"
+    },
+    {
+      "source": "alderleaf_farm",
+      "target": "reidoth_the_druid",
+      "type": "gives_quest"
+    },
+    {
+      "source": "shrine_of_luck",
+      "target": "banshee_bargain",
+      "type": "gives_quest"
+    },
+    {
+      "source": "townmasters_hall",
+      "target": "orc_trouble",
+      "type": "gives_quest"
+    },
+    {
+      "source": "the_spiders_web",
+      "target": "phandalin",
+      "type": "leads_to"
+    },
+    {
+      "source": "phandalin",
+      "target": "triboar_trail",
+      "type": "leads_to"
+    },
+    {
+      "source": "triboar_trail",
+      "target": "conyberry",
+      "type": "leads_to"
+    },
+    {
+      "source": "conyberry",
+      "target": "agathas_lair",
+      "type": "leads_to"
+    },
+    {
+      "source": "triboar_trail",
+      "target": "old_owl_well",
+      "type": "leads_to"
+    },
+    {
+      "source": "triboar_trail",
+      "target": "thundertree",
+      "type": "leads_to"
+    },
+    {
+      "source": "triboar_trail",
+      "target": "wyvern_tor",
+      "type": "leads_to"
+    },
+    {
+      "source": "triboar_trail",
+      "target": "cragmaw_castle",
+      "type": "leads_to"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "castle_entrance",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "trapped_hall",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "archer_post",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "ruined_barracks",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "storeroom",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "hobgoblin_barracks",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "banquet_hall",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "dark_hall",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "goblin_shrine",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "postern_gate",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "ruined_tower",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "guard_barracks",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "owlbear_tower",
+      "type": "contains"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "kings_quarters",
+      "type": "contains"
+    },
+    {
+      "source": "castle_entrance",
+      "target": "trapped_hall",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "archer_post",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "ruined_barracks",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "storeroom",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "hobgoblin_barracks",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "banquet_hall",
+      "type": "leads_to"
+    },
+    {
+      "source": "trapped_hall",
+      "target": "dark_hall",
+      "type": "leads_to"
+    },
+    {
+      "source": "dark_hall",
+      "target": "goblin_shrine",
+      "type": "leads_to"
+    },
+    {
+      "source": "dark_hall",
+      "target": "owlbear_tower",
+      "type": "leads_to"
+    },
+    {
+      "source": "dark_hall",
+      "target": "kings_quarters",
+      "type": "leads_to"
+    },
+    {
+      "source": "sister_garaele",
+      "target": "seek_agatha",
+      "type": "gives_quest"
+    },
+    {
+      "source": "daran_edermath",
+      "target": "investigate_old_owl_well",
+      "type": "gives_quest"
+    },
+    {
+      "source": "qelline_alderleaf",
+      "target": "consult_reidoth",
+      "type": "gives_quest"
+    },
+    {
+      "source": "harbin_wester",
+      "target": "deal_with_orcs",
+      "type": "gives_quest"
+    },
+    {
+      "source": "sildar_hallwinter",
+      "target": "rescue_gundren",
+      "type": "gives_quest"
+    },
+    {
+      "source": "agathas_lair",
+      "target": "seek_agatha",
+      "type": "requires"
+    },
+    {
+      "source": "old_owl_well",
+      "target": "investigate_old_owl_well",
+      "type": "requires"
+    },
+    {
+      "source": "thundertree",
+      "target": "consult_reidoth",
+      "type": "requires"
+    },
+    {
+      "source": "wyvern_tor",
+      "target": "deal_with_orcs",
+      "type": "requires"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "rescue_gundren",
+      "type": "requires"
+    },
+    {
+      "source": "agathas_lair",
+      "target": "sister_garaele",
+      "type": "involves"
+    },
+    {
+      "source": "old_owl_well",
+      "target": "hamun_kost",
+      "type": "involves"
+    },
+    {
+      "source": "thundertree",
+      "target": "reidoth",
+      "type": "involves"
+    },
+    {
+      "source": "thundertree",
+      "target": "venomfang",
+      "type": "involves"
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "sildar_hallwinter",
+      "type": "involves"
+    },
+    {
+      "source": "kings_quarters",
+      "target": "gundren_rockseeker",
+      "type": "involves"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "cave_entrance",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "mine_tunnels",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "old_entrance",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "old_guardroom",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "assayers_office",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "south_barracks",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "ruined_storeroom",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "fungi_cavern",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "great_cavern",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "dark_pool",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "north_barracks",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "smelter_cavern",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "starry_cavern",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "wizards_quarters",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "forge_of_spells",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "booming_cavern",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "old_streambed",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "collapsed_cavern",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "temple_of_dumathoin",
+      "type": "contains"
+    },
+    {
+      "source": "wave_echo_cave",
+      "target": "priests_quarters",
+      "type": "contains"
+    },
+    {
+      "source": "cave_entrance",
+      "target": "mine_tunnels",
+      "type": "leads_to"
+    },
+    {
+      "source": "cave_entrance",
+      "target": "old_entrance",
+      "type": "leads_to"
+    },
+    {
+      "source": "mine_tunnels",
+      "target": "old_entrance",
+      "type": "leads_to"
+    },
+    {
+      "source": "old_entrance",
+      "target": "old_guardroom",
+      "type": "leads_to"
+    },
+    {
+      "source": "old_guardroom",
+      "target": "assayers_office",
+      "type": "leads_to"
+    },
+    {
+      "source": "assayers_office",
+      "target": "south_barracks",
+      "type": "leads_to"
+    },
+    {
+      "source": "south_barracks",
+      "target": "ruined_storeroom",
+      "type": "leads_to"
+    },
+    {
+      "source": "ruined_storeroom",
+      "target": "fungi_cavern",
+      "type": "leads_to"
+    },
+    {
+      "source": "fungi_cavern",
+      "target": "great_cavern",
+      "type": "leads_to"
+    },
+    {
+      "source": "great_cavern",
+      "target": "dark_pool",
+      "type": "leads_to"
+    },
+    {
+      "source": "dark_pool",
+      "target": "north_barracks",
+      "type": "leads_to"
+    },
+    {
+      "source": "north_barracks",
+      "target": "smelter_cavern",
+      "type": "leads_to"
+    },
+    {
+      "source": "smelter_cavern",
+      "target": "starry_cavern",
+      "type": "leads_to"
+    },
+    {
+      "source": "starry_cavern",
+      "target": "wizards_quarters",
+      "type": "leads_to"
+    },
+    {
+      "source": "starry_cavern",
+      "target": "forge_of_spells",
+      "type": "leads_to"
+    },
+    {
+      "source": "starry_cavern",
+      "target": "booming_cavern",
+      "type": "leads_to"
+    },
+    {
+      "source": "booming_cavern",
+      "target": "old_streambed",
+      "type": "leads_to"
+    },
+    {
+      "source": "old_streambed",
+      "target": "collapsed_cavern",
+      "type": "leads_to"
+    },
+    {
+      "source": "collapsed_cavern",
+      "target": "temple_of_dumathoin",
+      "type": "leads_to"
+    },
+    {
+      "source": "temple_of_dumathoin",
+      "target": "priests_quarters",
+      "type": "leads_to"
+    },
+    {
+      "source": "nezznar",
+      "target": "temple_of_dumathoin",
+      "type": "involves"
+    },
+    {
+      "source": "mormesk_the_wraith",
+      "target": "wizards_quarters",
+      "type": "involves"
+    },
+    {
+      "source": "vhalak",
+      "target": "collapsed_cavern",
+      "type": "involves"
+    },
+    {
+      "source": "nundro_rockseeker",
+      "target": "priests_quarters",
+      "type": "involves"
+    },
+    {
+      "source": "nundro_rockseeker",
+      "target": "rescue_nundro",
+      "type": "gives_quest"
+    },
+    {
+      "source": "nezznar",
+      "target": "defeat_nezznar",
+      "type": "gives_quest"
+    },
+    {
+      "source": "triboar_trail",
+      "target": "neverwinter",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "goblin_trail",
+      "target": "goblin_ambush",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "cragmaw_hideout",
+      "target": "goblin_trail",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "goblin_blind",
+      "target": "cave_mouth",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "kennel",
+      "target": "cave_mouth",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "steep_passage",
+      "target": "cave_mouth",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "overpass",
+      "target": "steep_passage",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "twin_pools_cave",
+      "target": "overpass",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "klargs_cave",
+      "target": "kennel",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "stonehill_inn",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "barthen_provisions",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "edermath_orchard",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "lionshield_coster",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "phandalin_miners_exchange",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "alderleaf_farm",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "shrine_of_luck",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "townmasters_hall",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "tresendar_manor",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "redbrand_hideout",
+      "target": "tresendar_manor",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "barracks",
+      "target": "cellar",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "trapped_hall",
+      "target": "barracks",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "tresendar_crypts",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "slave_pens",
+      "target": "tresendar_crypts",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "armory",
+      "target": "slave_pens",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "storeroom_work_area",
+      "target": "armory",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "crevasse",
+      "target": "storeroom_work_area",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "guard_barracks",
+      "target": "crevasse",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "common_room",
+      "target": "guard_barracks",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "wizards_workshop",
+      "target": "common_room",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "glasstaff_quarters",
+      "target": "wizards_workshop",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "phandalin",
+      "target": "the_spiders_web",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "triboar_trail",
+      "target": "phandalin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "conyberry",
+      "target": "triboar_trail",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "agathas_lair",
+      "target": "conyberry",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "old_owl_well",
+      "target": "triboar_trail",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "thundertree",
+      "target": "triboar_trail",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "wyvern_tor",
+      "target": "triboar_trail",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "cragmaw_castle",
+      "target": "triboar_trail",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "trapped_hall",
+      "target": "castle_entrance",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "archer_post",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "ruined_barracks",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "storeroom",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "hobgoblin_barracks",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "banquet_hall",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "dark_hall",
+      "target": "trapped_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "goblin_shrine",
+      "target": "dark_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "owlbear_tower",
+      "target": "dark_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "kings_quarters",
+      "target": "dark_hall",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "mine_tunnels",
+      "target": "cave_entrance",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "old_entrance",
+      "target": "cave_entrance",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "old_entrance",
+      "target": "mine_tunnels",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "old_guardroom",
+      "target": "old_entrance",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "assayers_office",
+      "target": "old_guardroom",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "south_barracks",
+      "target": "assayers_office",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "ruined_storeroom",
+      "target": "south_barracks",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "fungi_cavern",
+      "target": "ruined_storeroom",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "great_cavern",
+      "target": "fungi_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "dark_pool",
+      "target": "great_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "north_barracks",
+      "target": "dark_pool",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "smelter_cavern",
+      "target": "north_barracks",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "starry_cavern",
+      "target": "smelter_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "wizards_quarters",
+      "target": "starry_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "forge_of_spells",
+      "target": "starry_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "booming_cavern",
+      "target": "starry_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "old_streambed",
+      "target": "booming_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "collapsed_cavern",
+      "target": "old_streambed",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "temple_of_dumathoin",
+      "target": "collapsed_cavern",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "priests_quarters",
+      "target": "temple_of_dumathoin",
+      "type": "leads_to",
+      "label": null
+    },
+    {
+      "source": "the_adventure_begins",
+      "target": "cragmaw_hideout",
+      "type": "leads_to",
+      "condition": "defeat_goblins",
+      "label": "Trail from ambush leads to Cragmaw Hideout"
+    },
+    {
+      "source": "rescue_sildar",
+      "target": "phandalin",
+      "type": "leads_to",
+      "condition": "rescue_sildar",
+      "label": "Rescue Sildar and travel to Phandalin"
+    },
+    {
+      "source": "phandalin",
+      "target": "redbrand_ruffians",
+      "type": "triggers",
+      "condition": "arrive_in_phandalin",
+      "label": "Arrival in Phandalin triggers confrontation with Redbrand Ruffians"
+    },
+    {
+      "source": "glasstaff",
+      "target": "the_spiders_web",
+      "type": "unlocks",
+      "condition": "defeat_glasstaff",
+      "label": "Defeating Glasstaff unlocks quests in The Spider's Web"
+    },
+    {
+      "source": "the_spiders_web",
+      "target": "wave_echo_cave",
+      "type": "leads_to",
+      "condition": "find_map_or_directions",
+      "label": "Leads to Wave Echo Cave after finding map or directions"
+    }
+  ]
+}

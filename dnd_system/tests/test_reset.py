@@ -1,4 +1,7 @@
 import os
+import sys
+# Add project root to path for imports
+sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 import json
 import shutil
 from dnd_system.app import reset_state, STATE_DIR
