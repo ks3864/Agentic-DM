@@ -40,7 +40,12 @@ def reset_state():
         else:
             src = os.path.join(STATE_DIR, template)
         dst = os.path.join(STATE_DIR, target)
+        
+        # Avoid SameFileError if source and dest are the same
         if os.path.exists(src):
+            if os.path.abspath(src) == os.path.abspath(dst):
+                print(f"Skipping reset for {target} (Source is same as Destination)")
+                continue
             shutil.copy2(src, dst)
             print(f"Reset {target} from {template}")
         else:
