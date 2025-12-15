@@ -2,6 +2,9 @@ import unittest
 import json
 import os
 import shutil
+import sys
+# Add project root to path for imports
+sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 from dnd_system.tools.graph_tool import ReadGraphTool, UpdateGraphTool
 
 class TestGraphSystem(unittest.TestCase):
