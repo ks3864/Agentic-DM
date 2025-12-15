@@ -1,4 +1,6 @@
 import sys
+import os
+import argparse
 import uvicorn.logging
 from chainlit.cli import cli
 
@@ -19,6 +21,23 @@ def patched_access_init(self, fmt=None, datefmt=None, style="%", use_colors=None
 uvicorn.logging.AccessFormatter.__init__ = patched_access_init
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(add_help=True)
+    parser.add_argument(
+        "--adventure-guide",
+        type=str,
+        default="./data/Lost Mine of Phandelver.md",
+    )
+    parser.add_argument(
+        "--knowledge-graph",
+        type=str,
+        default="./dnd_system/state/knowledge_graph.json",
+    )
+
+    args, _unknown = parser.parse_known_args(sys.argv[1:])
+
+    os.environ["AGENTICDM_ADVENTURE_GUIDE_PATH"] = args.adventure_guide
+    os.environ["AGENTICDM_KNOWLEDGE_GRAPH_TEMPLATE_PATH"] = args.knowledge_graph
+
     # Ensure the script acts like 'chainlit run dnd_system/app.py'
     sys.argv = ["chainlit", "run", "dnd_system/app.py"]
     try:
